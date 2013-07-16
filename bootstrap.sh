@@ -10,6 +10,17 @@ sudo apt-get install -y git unzip s3cmd curl
 
 
 #
+# Install NodeJs
+#
+
+sudo apt-get update -y
+sudo apt-get install -y python g++ make software-properties-common
+sudo add-apt-repository -y ppa:chris-lea/node.js
+sudo apt-get update -y
+sudo apt-get install -y nodejs
+
+
+#
 # Install docker.io
 #
 
@@ -33,6 +44,11 @@ pip install -r requirements.txt
 ./wsgi.py &
 cd ..
 
+
+#
+# Install hipache (reverse proxy developed by dotcloud)
+#
+npm install hipache -g
 
 #
 # Clone repo, usefull in case the automatic mount don't work
