@@ -106,6 +106,6 @@ NOTE: Exit a docker container with ctrl-p ctrl+q if you don't want to shut it do
 ## Docker images
 
 Images can be imoported and exported. My images are saved in Amazon S3 (they are to big to save in git).
-The images are gound here: s3://gizur-docker
+The images are found here: s3://gizur-docker. s3cmd is installed.
 
 
