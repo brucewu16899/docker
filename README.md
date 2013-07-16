@@ -76,22 +76,43 @@ See http://docker.io for more details.
 
 
 ```
+# Some Dockerfile templates are available here (if the automatic mount has worked) 
+ls /vagrant/docker-templates/
+
+# Create an image with Python and NodeJS development environments
+docker build - < /vagrant/docker-templates/Dockerfile
+
 # List images
 docker images
+
+# create a new container and connect. ID could be base or the image created above etc.
+docker run -i -t [ID] /bin/bash
 
 # List running containers
 docker ps
 
 # List all containers
 docker ps -a
+```
 
-# create a new container and connect. ID could be base etc.
-docker run -i -t [ID] /bin/bash
+NOTE: Exit a docker container with ctrl-p ctrl+q if you don't want to shut it down!
+
+
+## Saving docker images
+
+Images can be imoported and exported. My images are saved in Amazon S3 (they are to big to save in git).
+The images are found here: s3://gizur-docker. s3cmd is installed.
+
+
+```
+# List all containers (als those not running)
+docker ps -a
+
+# Export container to tar
+docker export [ID]
 
 # Create ubuntu image from local tar (in case there is network connectivity to the docker registry)
-cp /vagrant/ubuntu.tar.gz
-gunzip ubuntu.tar.gz
-cat ubuntu.tar | docker import - my_ubuntu 
+cat [ID].tar | docker import - [Name new image] 
 
 # Check ID of image just created
 docker images
@@ -100,12 +121,5 @@ docker images
 docker run -i -t [ID] /bin/bash
 ```
 
-NOTE: Exit a docker container with ctrl-p ctrl+q if you don't want to shut it down!
-
-
-## Docker images
-
-Images can be imoported and exported. My images are saved in Amazon S3 (they are to big to save in git).
-The images are found here: s3://gizur-docker. s3cmd is installed.
 
 
