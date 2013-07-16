@@ -1,14 +1,5 @@
-Vagrant sandbox
----------------
-
-NOTE: A kernel upgrade will be performed on the the first boot. In case of problems
-in this upgrade, just do `vagrant up` once more to start the vm. `uname -r` should
-say 3.2.0.23
-
-NOTE: `vagrant reload vb|aws` don't seam to work. Use `vagrant destroy vb|aws && vagrant up vb|aws` instead.
-
-
-See http://docs.vagrantup.com for more details
+Installation using Vagrant
+-------------------------
 
 
 Some commands:
@@ -33,20 +24,24 @@ Some virtualbox boxes:
 
 ```
 # Start VM
-vagrant up
+vagrant up vb|aws
 
 # Login
-vagrant ssh
+vagrant ssh vb|aws
 
 # Shutdown VM
-vagrant halt
+vagrant halt vb|aws
 
 # Remove VM
-vagrant destroy
+vagrant destroy vb
 ```
 
+See http://docs.vagrantup.com for more details
 
-In VirtualBox:
+
+
+
+## In VirtualBox:
 
 ```
 # List machines
@@ -57,7 +52,15 @@ VBoxManage list runningvms
 ```
 
 
-AWS EC2 instances can also be used:
+## AWS EC2 instances can also be used:
+
+NOTE: A kernel upgrade will be performed on the the first boot. In case of problems
+in this upgrade, just do `vagrant up` once more to start the vm. `uname -r` should
+say 3.2.0.23
+
+NOTE: `vagrant reload vb|aws` don't seam to work. Use `vagrant destroy vb|aws && vagrant up vb|aws` instead.
+
+
 
  * https://github.com/mitchellh/vagrant-aws
 
