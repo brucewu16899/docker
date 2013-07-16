@@ -1,7 +1,7 @@
 Installation using Vagrant
 -------------------------
 
-Both virtualbox and AWS is supported.
+Both virtualbox and AWS is supported. AWS needs some special setup, see below.
 
 ```
 # Start VM
@@ -14,32 +14,16 @@ vagrant ssh vb|aws
 vagrant halt vb|aws
 
 # Remove VM
-vagrant destroy vb
+vagrant destroy vb|aws
 ```
 
-Some more commands:
-
-```
-# List available boxes
-vagrant box list
-
-# Initialize 64 bit ubntu
-vagrant init precise64 http://files.vagrantup.com/precise64.box
-```
-
-Some virtualbox boxes:
-
- * Ubuntu 12.04 64 bit - http://files.vagrantup.com/precise64.box
- * Ubuntu 12.04 32 bit - http://files.vagrantup.com/precise32.box
- * Ubuntu 13.04 64 bit - http://cloud-images.ubuntu.com/raring/current/raring-server-cloudimg-vagrant-amd64-disk1.box
- * CentOs 6.3 64 bit   - https://dl.dropbox.com/u/7225008/Vagrant/CentOS-6.3-x86_64-minimal.box
- * More to be found here - http://www.vagrantbox.es/
+NOTE: `vagrant reload vb|aws` don't seam to work. Use `vagrant destroy vb|aws && vagrant up vb|aws` instead.
 
 
 See http://docs.vagrantup.com for more details
 
 
-## In VirtualBox:
+## In VirtualBox
 
 ```
 # List machines
@@ -50,48 +34,45 @@ VBoxManage list runningvms
 ```
 
 
-## AWS EC2 instances can also be used:
+## AWS EC2
 
-NOTE: A kernel upgrade will be performed on the the first boot. In case of problems
-in this upgrade, just do `vagrant up` once more to start the vm. `uname -r` should
-say 3.2.0.23
-
-NOTE: `vagrant reload vb|aws` don't seam to work. Use `vagrant destroy vb|aws && vagrant up vb|aws` instead.
-
-
-
- * https://github.com/mitchellh/vagrant-aws
-
-
-NOTE: Only the region us-east-1 seams to work at the moment.
+Setup for AWS EC2:
 
 ```
+# Install AWS plusin
 vagrant plugin install vagrant-aws
-
 vagrant plugin list
 
+# A dummy box is needed
 vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
 
 # Set this variable to use AWS, it should bot be set to use a local Virtualbox instead
 export VAGRANT_AWS='Yes'
 
 # These environment variables need to be set, put in bashrc/bach_profile env 
+# NOTE: Only the region us-east-1 seams to work at the moment.
 export AWS_API_KEY=...
 export AWS_API_SECRET=...
 export AWS_PRIVATE_KEY_PATH=...
 export AWS_KEYAIR_NAME=...
 export AWS_REGION=...
 
-vagrant up --provider=aws
+vagrant up aws
 ```
 
+NOTE: A kernel upgrade will be performed on the the first boot. In case of problems
+in this upgrade, just do `vagrant up` once more to start the vm. `uname -r` should
+say 3.2.0.23
+
+
+For more details see:  https://github.com/mitchellh/vagrant-aws
 
 
 Docker
 -----
 
-
-Docker has been installed in this VM.
+Once the VM is up and running, these docker commands will get you started.
+See http://docker.io for more details.
 
 
 ```
@@ -122,7 +103,7 @@ docker run -i -t [ID] /bin/bash
 NOTE: Exit a docker container with ctrl-p ctrl+q if you don't want to shut it down!
 
 
-## Import/Export
+## Docker images
 
 Images can be imoported and exported. My images are saved in Amazon S3 (they are to big to save in git).
 The images are gound here: s3://gizur-docker
