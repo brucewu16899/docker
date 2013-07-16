@@ -48,7 +48,7 @@ cd ..
 #
 # Install hipache (reverse proxy developed by dotcloud)
 #
-npm install hipache -g
+sudo npm install hipache -g
 
 #
 # Clone repo, usefull in case the automatic mount don't work
