@@ -1,8 +1,23 @@
 Installation using Vagrant
 -------------------------
 
+Both virtualbox and AWS is supported.
 
-Some commands:
+```
+# Start VM
+vagrant up vb|aws
+
+# Login
+vagrant ssh vb|aws
+
+# Shutdown VM
+vagrant halt vb|aws
+
+# Remove VM
+vagrant destroy vb
+```
+
+Some more commands:
 
 ```
 # List available boxes
@@ -21,24 +36,7 @@ Some virtualbox boxes:
  * More to be found here - http://www.vagrantbox.es/
 
 
-
-```
-# Start VM
-vagrant up vb|aws
-
-# Login
-vagrant ssh vb|aws
-
-# Shutdown VM
-vagrant halt vb|aws
-
-# Remove VM
-vagrant destroy vb
-```
-
 See http://docs.vagrantup.com for more details
-
-
 
 
 ## In VirtualBox:
