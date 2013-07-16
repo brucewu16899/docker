@@ -31,7 +31,7 @@ RUN apt-get install -y git wget
 #
 
 RUN apt-get update -y
-RUN apt-get install -y python-software-properties python g++ make
+RUN apt-get install -y python g++ make software-properties-common
 RUN add-apt-repository -y ppa:chris-lea/node.js
 RUN apt-get update -y
 RUN apt-get install -y nodejs
