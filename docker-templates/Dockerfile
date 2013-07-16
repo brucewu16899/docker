@@ -25,22 +25,6 @@ RUN apt-get update -y
 
 RUN apt-get install -y git wget
 
-#
-# SaltStack did not install!! Have reported bug!
-#
-
-# Fix for the SaltStack installation
-#RUN sudo dpkg-divert --local --rename --add /sbin/initctl
-#RUN ln -s /bin/true /sbin/initctl
-
-# Install SaltStack
-#RUN wget -O - http://bootstrap.saltstack.org | sh
-
-RUN echo StrictHostKeyChecking=no >> /root/.ssh/config
-
-echo "Doing this (a good way to make it easier to use git): echo StrictHostKeyChecking=no >> /root/.ssh/config"
-echo "Now you can clone any repo: git clone https://github.com/whateverrepo"
-
 
 #
 # Install NodeJs

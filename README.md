@@ -82,6 +82,12 @@ ls /vagrant/docker-templates/
 # Create an image with Python and NodeJS development environments
 docker build - < /vagrant/docker-templates/Dockerfile
 
+# Show the running containers
+docker ps
+
+# View the logs from the installation, see container ID above
+docker logs [ID]
+
 # List images
 docker images
 
