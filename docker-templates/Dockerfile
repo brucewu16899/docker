@@ -50,6 +50,6 @@ RUN pip install virtualenv
 # Install some dependensices (the OpenERP list)
 RUN apt-get install -y python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-reportlab python-simplejson python-tz python-vobject python-werkzeug python-yaml
 
-echo "Create a python env: virtualenv venv --distribute"
-echo "Then run: source venv/bin/activate"
+RUN echo "Create a python env: virtualenv venv --distribute"
+RUN echo "Then run: source venv/bin/activate"
 

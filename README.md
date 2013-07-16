@@ -80,7 +80,8 @@ See http://docker.io for more details.
 ls /vagrant/docker-templates/
 
 # Create an image with Python and NodeJS development environments
-docker build - < /vagrant/docker-templates/Dockerfile
+cd docker
+docker build - < docker-templates/Dockerfile
 
 # Show the running containers
 docker ps
