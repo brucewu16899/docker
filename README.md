@@ -118,6 +118,8 @@ docker images
 docker run -i -t [ID] /bin/bash
 ```
 
+NOTE: Exit a docker container with ctrl-p ctrl+q if you don't want to shut it down!
+
 
 ## Import/Export
 
