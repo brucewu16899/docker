@@ -81,7 +81,7 @@ ls /vagrant/docker-templates/
 
 # Create an image with Python and NodeJS development environments
 cd docker
-docker build - < docker-templates/Dockerfile
+docker build .
 
 # Show the running containers
 docker ps
@@ -104,6 +104,34 @@ docker ps -a
 
 NOTE: Exit a docker container with ctrl-p ctrl+q if you don't want to shut it down!
 
+Run example app:
+
+```
+cd ~/docker/example-apps/nodejs
+
+# Build an image
+docker build .
+Step 23 : CMD ["node", "/src/index.js"]
+ ---> Running in 82624437f7a7
+ ---> 015d63f05f53
+Successfully built 015d63f05f53
+
+# Start a container
+docker run -d 015d63f05f53
+1703982529f5
+
+# check the logs
+docker logs 1703982529f5
+Running on http://localhost:8080
+
+# Check which port that is exposed
+docker port 1703982529f5 8080
+49153
+
+# Try to access the app
+curl http://localhost:49153
+Hello World
+```
 
 ## Saving docker images
 

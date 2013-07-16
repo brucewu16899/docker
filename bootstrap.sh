@@ -6,7 +6,7 @@
 #
 
 sudo apt-get update
-sudo apt-get install -y git unzip s3cmd
+sudo apt-get install -y git unzip s3cmd curl
 
 
 #
