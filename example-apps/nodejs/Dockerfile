@@ -65,6 +65,7 @@ RUN echo "Then run: source venv/bin/activate"
 
 # Bundle app source
 ADD . /src
+
 # Install app dependencies
 RUN cd /src; npm install
 
