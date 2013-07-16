@@ -32,3 +32,10 @@ cd docker-registry && cp config_sample.yml config.yml
 pip install -r requirements.txt
 ./wsgi.py &
 cd ..
+
+
+#
+# Clone repo, usefull in case the automatic mount don't work
+#
+
+git clone https://github.com/colmsjo/docker.git

@@ -15,7 +15,7 @@ MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 RUN echo "127.0.0.1\t`hostname`" >> /etc/hosts
 
 # make sure the package repository is up to date
-#RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update -y
 
 
@@ -32,6 +32,8 @@ RUN apt-get install -y git wget
 
 RUN apt-get update -y
 RUN apt-get install -y python g++ make software-properties-common
+RUN apt-get install -y --reinstall python-software-properties
+RUN dpkg-reconfigure python-software-properties
 RUN add-apt-repository -y ppa:chris-lea/node.js
 RUN apt-get update -y
 RUN apt-get install -y nodejs
