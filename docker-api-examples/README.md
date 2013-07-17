@@ -22,6 +22,6 @@ Successfully built e29f1e430a8e
 
 curl -H "Content-Type: application/json" http://localhost:4243/containers/create -d '{ "Hostname":"", "User":"", "Memory":0, "MemorySwap":0, "AttachStdin":false, "AttachStdout":true, "AttachStderr":true, "PortSpecs":null, "Tty":false, "OpenStdin":false, "StdinOnce":false, "Env":null, "Cmd":[ "date" ], "Dns":null, "Image":"e29f1e430a8e", "Volumes":{}, "VolumesFrom":" }'
 
-echo '{ "Hostname":"", "User":"", "Memory":0, "MemorySwap":0, "AttachStdin":false, "AttachStdout":true, "AttachStderr":true, "PortSpecs":null, "Tty":false, "OpenStdin":false, "StdinOnce":false, "Env":null, "Cmd":[ "date" ], "Dns":null, "Image":"e29f1e430a8e", "Volumes":{}, "VolumesFrom":" }' | curl -H "Content-Type: application/json" http://localhost:4243/containers/create -d -
+echo '{ "Hostname":"", "User":"", "Memory":0, "MemorySwap":0, "AttachStdin":false, "AttachStdout":true, "AttachStderr":true, "PortSpecs":null, "Tty":false, "OpenStdin":false, "StdinOnce":false, "Env":null, "Cmd":[ "date" ], "Dns":null, "Image":"e29f1e430a8e", "Volumes":{}, "VolumesFrom":" }' | curl -H "Content-Type: application/json" -d - http://localhost:4243/containers/create
 
 ```
