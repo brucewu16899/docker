@@ -32,20 +32,22 @@ RUN apt-get install -y git wget
 
 
 #
-# Install NodeJs
+# Install Python and virutalenv
 #
 
-RUN apt-get update -y
-RUN apt-get install -y python g++ make software-properties-common
-RUN apt-get install -y --reinstall python-software-properties
-RUN dpkg-reconfigure python-software-properties
-RUN add-apt-repository -y ppa:chris-lea/node.js
-RUN apt-get update -y
-RUN apt-get install -y nodejs
+RUN apt-get install -y build-essential python2.7-dev python-setuptools
+RUN easy_install pip
+RUN pip install virtualenv
+
+# Install some dependensices (the OpenERP list)
+RUN apt-get install -y python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-reportlab python-simplejson python-tz python-vobject python-werkzeug python-yaml
+
+RUN echo "Create a python env: virtualenv venv --distribute"
+RUN echo "Then run: source venv/bin/activate"
 
 
 # -----------------------------------------------------------------------------------
-# Setup the app
+# Setup the app - NEEDS TO BE UPDATED
 #
 
 # Bundle app source
