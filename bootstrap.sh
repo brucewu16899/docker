@@ -48,7 +48,16 @@ cd ..
 #
 # Install hipache (reverse proxy developed by dotcloud)
 #
+
 sudo npm install hipache -g
+
+
+#
+# Install redis, used by hipache
+#
+
+sudo apt-get install -y redis-server
+
 
 #
 # Clone repo, usefull in case the automatic mount don't work
