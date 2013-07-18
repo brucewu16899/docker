@@ -1,20 +1,98 @@
-var redis = require("redis"),
-    client = redis.createClient();
+#!/usr/bin/env node
 
-client.on("error", function (err) {
-    console.log("Error " + err);
-});
+// export-issues.js
+//------------------------------
+//
+// 2013-07-19, Jonas Colmsjö
+//
+// Copyright Gizur AB 2013
+//
+// Connecting 
+//
+// dependencies: npm install jsdom xmlhttprequest jQuery optimist
+//
+// Using Google JavaScript Style Guide - http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+//
+//------------------------------
 
-client.on("connect", function () {
-    client.set("foo_rand000000000000", "some fantastic value", redis.print);
-    client.get("foo_rand000000000000", redis.print);
 
-    client.del("frontend:www.dotcloud.com", redis.print);
 
-    client.rpush("frontend:www.dotcloud.com", "mywebsite", redis.print);
-    client.rpush("frontend:www.dotcloud.com", "http://192.168.0.42:8080", redis.print);
-    client.lrange("frontend:www.dotcloud.com", 0,-1, redis.print);
+(function(){
 
-    client.del("frontend:www.dotcloud.com", redis.print);
+// Includes
+// ================
 
-});
+var $       = require('jQuery');
+var helpers = require('./helpers-old.js');
+var argv    = require('optimist')
+                .usage('Usage: ./app.js --cmd [command to run]')
+                .demand(['cmd'])
+                .argv;
+
+
+// set logging level
+helpers.logging.threshold  = helpers.logging.warn;
+
+
+// Globals
+//==============
+
+var sep    = ';';
+var oauthToken;
+
+
+// Functions
+//==============
+
+
+// getOauthToken
+//-------------------------------------------------------------------------------------------------
+//
+// Equivalent of: curl -i -u colmsjo -d '{"scopes":["repo"]}' https://api.github.com/authorizations
+//
+
+function getOauthToken(user, password){
+
+    helpers.logDebug('getOauthToken: Starting list authorization...');
+
+      var request = $.ajax({
+
+        url: 'https://api.github.com/authorizations',
+        type: 'POST',
+
+        data: '{ "scopes": [ "repo" ], "note": "Created by list-issues.js"  }',
+
+        username: user,
+        password: password,
+
+        success: function(data){
+            helpers.logDebug('getOauthToken: Yea, it worked...' + JSON.stringify(data) );
+            oauthToken = data;
+        },
+
+        error: function(data){
+            helpers.logErr('getOauthToken: Shit hit the fan...' + JSON.stringify(data));
+
+        }
+    });
+
+    return request;
+        
+}
+
+switch (argv.cmd) {
+
+    case "test":
+        helpers.logDebug('main: test command...');
+        break;
+
+    case "test2":
+        helpers.logDebug('main: test command...');
+        break;
+
+    default:
+        helpers.logErr('No such command: ' + argv.cmd);
+
+}
+
+}());
