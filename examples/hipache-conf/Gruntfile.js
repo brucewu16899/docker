@@ -6,9 +6,6 @@ module.exports = function(grunt) {
     test: {
       files: ['test/helpers_test.js']
     },
-    lint: {
-      files: ['grunt.js', './*.js', 'test/**/*.js']
-    },
     watch: {
       files: '<config:lint.files>',
       tasks: 'default'
@@ -48,6 +45,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['jshint', 'uglify']);
 
 };
