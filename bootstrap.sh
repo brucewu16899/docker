@@ -53,6 +53,13 @@ sudo npm install hipache -g
 
 
 #
+# Install grunt, used for nodejs development
+#
+
+sudo npm install grunt grunt-cli -g
+
+
+#
 # Install redis, used by hipache
 #
 
