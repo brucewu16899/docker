@@ -1,0 +1,10 @@
+{
+  "name": "hipache-conf-test",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Playing around with hipache configuration in redis",
+  "author": "Jonas Colmsjö <jonas@gizur.com>",
+  "dependencies": {
+    "redis": "0.8.4"
+  }
+}
