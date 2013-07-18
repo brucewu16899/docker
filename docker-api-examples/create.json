@@ -15,7 +15,7 @@
              "date"
      ],
      "Dns":null,
-     "Image":"base",
+     "Image":"e29f1e430a8e",
      "Volumes":{},
      "VolumesFrom":""
 }
