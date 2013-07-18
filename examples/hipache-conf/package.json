@@ -5,6 +5,10 @@
   "description": "Playing around with hipache configuration in redis",
   "author": "Jonas Colmsjö <jonas@gizur.com>",
   "dependencies": {
+    "grunt": "*",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2",
     "redis": "0.8.4"
   }
 }
