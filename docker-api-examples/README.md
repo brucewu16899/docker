@@ -23,6 +23,6 @@ Successfully built e29f1e430a8e
 curl -H "Content-Type: application/json" -d @create.json http://localhost:4243/containers/create
 {"Id":"c6bfd6da99d3"}
 
-curl -H "Content-Type: application/json" http://localhost:4243/containers/(id)/start
+curl -H "Content-Type: application/json" http://localhost:4243/containers/c6bfd6da99d3/start
 
 ```
