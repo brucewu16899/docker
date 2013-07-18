@@ -23,7 +23,7 @@
 // ================
 
 var $       = require('jQuery');
-var helpers = require('./helpers-old.js');
+var helpers = require('./helpers-old.js').create();
 var argv    = require('optimist')
                 .usage('Usage: ./app.js --cmd [command to run]')
                 .demand(['cmd'])
@@ -31,7 +31,7 @@ var argv    = require('optimist')
 
 
 // set logging level
-helpers.logging.threshold  = helpers.logging.warn;
+helpers.logging_threshold  = helpers.logging.warning;
 
 
 // Globals
