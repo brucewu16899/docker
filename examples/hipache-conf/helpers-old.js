@@ -1,4 +1,4 @@
-/*jshint browser:true, devel:true evil:true*/
+/*jshint browser:true, devel:true, evil:true*/
 (function(exports) {
 
 // helpers.js
