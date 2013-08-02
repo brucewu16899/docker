@@ -25,7 +25,9 @@ redis_client.on("connect", function () {
             console.log('_proxyStatus: redis keys - ' + keys);
 
             for(key in keys) {
-                redis_client.lrange(key, 0,-1, redis.print);
+                redis_client.lrange(key, 0,-1, function(err,res) {
+			console.log(key + ' - ' + res);
+	        });
             }
    });
 
