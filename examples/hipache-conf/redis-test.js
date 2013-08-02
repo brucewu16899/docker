@@ -19,7 +19,7 @@ redis_client.on("connect", function () {
 
     redis_client.keys("*", function(keys) {
 
-            helpers.logDebug('_proxyStatus: redis keys - ' + keys);
+            console.log('_proxyStatus: redis keys - ' + keys);
 
             for(key in keys) {
                 redis_client.lrange(key, 0,-1, redis.print);
