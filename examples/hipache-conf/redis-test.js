@@ -31,6 +31,6 @@ redis_client.on("connect", function () {
             }
    });
 
-    redis_client.del("frontend:www.dotcloud.com", redis.print);
+   //redis_client.del("frontend:www.dotcloud.com", redis.print);
 
 });
