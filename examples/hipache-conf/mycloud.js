@@ -55,7 +55,7 @@ function build(){
 
     var fs = require('fs');
     var request = require('request');
-    fs.createReadStream('js.tar').pipe(request.post('http://localhost:3000/'));
+    fs.createReadStream('webapp.tar').pipe(request.post('http://localhost:4243/'));
 
     helpers.logDebug('build: data sent...');        
 }

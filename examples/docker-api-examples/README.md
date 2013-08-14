@@ -31,5 +31,13 @@ curl -H "Content-Type: application/vnd.docker.raw-stream" -d '' "http://localhos
 
 # Inspect the container
 curl -G http://localhost:4243/containers/c6bfd6da99d3/json
+
+# Export the container
+curl -o export.tar  -G http://localhost:4243/containers/c6bfd6da99d3/export 
+
+# Create an image from an export
+curl -H 'Content-Type: application/tar' --compressed --data-binary @/tmp/export.tar -m 60 "http://loc
+alhost:4243/images/create?fromSrc=-"
+{"status":"6de9128f33c7"}
 ```
 
