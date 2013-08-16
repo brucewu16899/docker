@@ -37,4 +37,4 @@ RUN cd /src; mvn package
 
 
 EXPOSE  5000
-CMD ["java", "-cp","target/classes:target/dependency/*","HelloWorld"]
+CMD ["java", "-cp","/src/target/classes:/src/target/dependency/*","HelloWorld"]
