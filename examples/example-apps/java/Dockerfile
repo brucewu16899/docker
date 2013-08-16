@@ -25,7 +25,7 @@ RUN apt-get install -y git wget
 # Install Java
 #
 
-RUN apt-get install -y java-common maven2
+RUN apt-get install -y java-common openjdk-6-jdk maven2
 
 
 # Bundle app source
