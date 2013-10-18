@@ -1,26 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Multi VM example
 #
-# See http://docs-v1.vagrantup.com/v1/docs/multivm.html
+# Start VM with docker installed
 #
-# Vagrant::Config.run do |config|
-#   config.vm.define :web do |web_config|
-#     web_config.vm.box = "web"
-#     web_config.vm.forward_port 80, 8080
-#   end
-#
-#   config.vm.define :db do |db_config|
-#     db_config.vm.box = "db"
-#     db_config.vm.forward_port 3306, 3306
-#   end
-# end
-#
-# vagrant up web
-# vagrant ssh
-
-
 
 
 Vagrant.configure("2") do |config|
@@ -29,7 +12,7 @@ Vagrant.configure("2") do |config|
   # AWS plugin
   #
 
-  config.vm.define :aws do |aws_config|
+  config.vm.define :ubuntu_aws do |aws_config|
    # aws_config.vm.forward_port 80, 8080
 
     aws_config.vm.provider :aws do |aws, override|
@@ -48,7 +31,7 @@ Vagrant.configure("2") do |config|
 
     aws_config.vm.box = "dummy"
     aws_config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
-    aws_config.vm.provision :shell, :path => "bootstrap.sh"
+    aws_config.vm.provision :shell, :path => "bootstrap-ec2.sh"
 
   end
 
@@ -56,17 +39,38 @@ Vagrant.configure("2") do |config|
   #
   # A local virtualbox
   #
+  # Using a bridged network instead of NAT (the VM will apear to be on the same network as the host)
+  #
 
-  config.vm.define :vb do |vb_config|
+  config.vm.define :ubuntu do |vb_config|
     vb_config.vm.box = "precise64"
     vb_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-#    vb_config.vm.network :forwarded_port, guest: 49150, host: 49150
-#    vb_config.vm.network :forwarded_port, guest: 49151, host: 49151
-#    vb_config.vm.network :forwarded_port, guest: 49152, host: 49152
-#    vb_config.vm.network :forwarded_port, guest: 49153, host: 49153
-#    vb_config.vm.network :forwarded_port, guest: 49154, host: 49154
-#    vb_config.vm.network :forwarded_port, guest: 49155, host: 49155
+
+#    vb_config.vm.network :public_network
+    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 8069, host: 8069, auto_correct: true
+
     vb_config.vm.provision :shell, :path => "bootstrap.sh"
+    vb_config.vm.provision :shell, :path => "bootstrap2.sh"
+  end
+
+
+  config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--memory", "1000"]
+  end
+
+
+  #
+  # CoreOS - an operating system build for docker (only!)
+  #
+
+  config.vm.define :coreos do |vb_config|
+
+#    vb_config.vm.network :public_network
+    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+
+    vb_config.vm.box = "coreos"
+    vb_config.vm.box_url = "http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box"
   end
 
 end
