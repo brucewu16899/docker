@@ -5,11 +5,24 @@ Build the container: `docker build .`
 
 Start a container: `docker run -d [ID]`
 
+After building and starting the container, check the IP: `docker inspect <CONTAINER_ID>
 
-After building and starting the container:
+Run a simple test.
 
- * Check the IP: `docker inspect <CONTAINER_ID>
- * Run a simple test: `mysql -h <IP> -u admin -p < test.sql`
+```
+# Start a container, just for playing around in
+docker run -t -i -dns=172.17.42.1 ubuntu /bin/bash
+
+# Install dig and nano
+apt-get install -y dnsutils nano net-tools ping mysql-client
+
+# Check if the DNS finds the dbserver that was setup above
+dig mysql.local
+
+echo "SELECT 1 + 1 AS solution;" | mysql -h mysql.local -u admin -p
+```
+
+
 
 
 Setup DNS
