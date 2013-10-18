@@ -81,7 +81,9 @@ sudo npm install hipache -g --production
 sudo npm install redis-dns -g --production
 
 sudo cp $HOME/docker/usr/lib/node_modules/redis-dns/redis-dns-config.json /usr/lib/node_modules/redis-dns
-sudo ln -s /usr/lib/node_modules/redis-dns/bin/start.sh start-redis-dns
+#sudo ln -s /usr/lib/node_modules/redis-dns/bin/start.sh start-redis-dns
+sudo cp $HOME/docker/etc/init/redis-dns.conf /etc/init
+sudo service redis-dns restart
 
 
 #
