@@ -31,7 +31,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y lxc-docker
 
 # Need to run docker with other flags, this file need to be updated once the machine is up
 sudo cp $HOME/docker/etc/init/docker.conf /etc/init
-sudo su vagrant -c "echo alias docker='docker -H=tcp://127.0.0.1:4243' >> $HOME/.profile"
+sudo su vagrant -c "echo alias docker=\'docker -H=tcp://127.0.0.1:4243\' >> $HOME/.profile"
 sudo service docker restart
 
 #
