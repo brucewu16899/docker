@@ -81,6 +81,15 @@ redis 127.0.0.1:6379> get redis-dns:dbserver
 ```
 
 
+For CoreOS
+----------
+
+1. Start with creating a container that simplfies the management of CoreOOS: `JACC=$(docker run -d colmsjo/jacc /usr/sbin/sshd -D -e -f /etc/ssh/sshd_config)`
+1. `docker ps` will show the containers running. $JACC has the ID for the container just created.
+1. Get the IP for the new container: `docker inspect $JACC
+ * This will save the IP in a variable: `CONTAINER_IP=$(docker inspect $JACC | grep IPAddress | awk '{ print $2 }' | tr -d ',"')`
+1. Now do `ssh root@$CONTAINER_IP`. The password is 'jacc'
+
 
 Tips and tricks
 --------------

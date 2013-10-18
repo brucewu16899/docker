@@ -70,7 +70,6 @@ sudo cp ./usr/lib/node_modules/redis-dns/redis-dns-config.json /usr/lib/node_mod
 sudo ln -s /usr/lib/node_modules/redis-dns/bin/start.sh start-redis-dns
 
 
-
 #
 # Install grunt, used for nodejs development
 #
@@ -81,3 +80,7 @@ sudo npm install grunt grunt-cli -g
 # Use the local nameserver and then google's
 # NOTE: sometimes usefull when using mobile broadband
 #sudo sh -c 'echo "dns-nameservers localhost 8.8.8.8" >> /etc/network/interfaces'
+
+
+sudo su vagrant -c "cd ~ && git clone https://github.com/colmsjo/docker.git"
+
