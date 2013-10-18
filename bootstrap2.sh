@@ -81,10 +81,3 @@ sudo npm install grunt grunt-cli -g
 # Use the local nameserver and then google's
 # NOTE: sometimes usefull when using mobile broadband
 #sudo sh -c 'echo "dns-nameservers localhost 8.8.8.8" >> /etc/network/interfaces'
-
-
-#
-# Clone this repo
-#
-
-sudo su vagrant -c "cd ~ && git clone https://github.com/gizur/gizur-wp-20.git"
