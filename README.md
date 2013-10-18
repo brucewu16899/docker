@@ -36,14 +36,16 @@ DNS server to use in order to access Postgres using a name rather that an IP: `s
 # First show the IP of the docker bridge
 ifconfig |grep -A 7 docker0
 
-# This is the redis-dns configuration
+# This is the redis-dns configuration, change if necessary (primarily IP)
 cat /usr/lib/node_modules/redis-dns/redis-dns-config.json
 
 # Check that the redis server is running
 sudo service redis-server status
 
-# Start the server using the symlink
-./start-redis-dns
+# Check status of redis-dns, restart if the configuration was changed
+sudo service redis-dns status
+sudo service redis-dns restart
+
 
 # Check the log
 sudo cat /var/log/redis-dns.log
