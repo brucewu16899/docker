@@ -101,4 +101,6 @@ Tips and tricks
  * All containers are showed with `docker ps -a` (also those that are stopped)
  * Remove stopped containers not being used (running containers can't be removed so there is no need to worry about that) - `docker rm [ID]`
  * show images - graph      - `sudo sh -c "ls -d /var/lib/docker/graph/* | xargs du -h -s | sort"`
+1. Remove intermediate and don't use the cache `docker build -rm -no-cache`
+
 

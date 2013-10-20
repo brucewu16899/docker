@@ -3,7 +3,7 @@ MySQL container
 
 Build the container: `docker build .`
 
-Start a container: `docker run -d [ID]`
+Start a container: `docker run -d -dns=172.17.42.1 [ID]`
 
 After building and starting the container, check the IP: `docker inspect <CONTAINER_ID>
 
