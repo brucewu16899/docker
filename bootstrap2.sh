@@ -97,3 +97,9 @@ sudo npm install grunt grunt-cli -g
 # NOTE: sometimes usefull when using mobile broadband
 #sudo sh -c 'echo "dns-nameservers localhost 8.8.8.8" >> /etc/network/interfaces'
 
+
+#
+# Setup ubuntu env
+#
+
+sudo cat ./etc/environment >> /etc/environment

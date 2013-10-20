@@ -1,0 +1,2 @@
+DOCKER_MYSQL="enter IP here"
+REDIS_DNS="enter IP here"
