@@ -102,4 +102,4 @@ sudo npm install grunt grunt-cli -g
 # Setup ubuntu env
 #
 
-sudo cat ./etc/environment >> /etc/environment
+sudo sh -c "cat ./etc/environment >> /etc/environment"

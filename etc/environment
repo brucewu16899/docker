@@ -1,2 +1,2 @@
-declare -x DOCKER_MYSQL="enter IP here"
-decalre -x REDIS_DNS="enter IP here"
+DOCKER_MYSQL="enter IP here"
+REDIS_DNS="enter IP here"
