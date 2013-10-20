@@ -46,7 +46,6 @@ sudo service redis-server status
 sudo service redis-dns status
 sudo service redis-dns restart
 
-
 # Check the log
 sudo cat /var/log/redis-dns.log
 ```
@@ -83,6 +82,12 @@ redis 127.0.0.1:6379> get redis-dns:dbserver
 ```
 
 
+### Edit environment variables
+
+Update environment varaibles with IP addresses: `sudo nano /etc/environment`
+
+
+
 For CoreOS
 ----------
 
@@ -102,5 +107,5 @@ Tips and tricks
  * Remove stopped containers not being used (running containers can't be removed so there is no need to worry about that) - `docker rm [ID]`
  * show images - graph      - `sudo sh -c "ls -d /var/lib/docker/graph/* | xargs du -h -s | sort"`
 1. Remove intermediate and don't use the cache `docker build -rm -no-cache`
-
+1. Log rotation: [whatever program] | /usr/bin/multilog s1024000 /var/log/yourapp 2>&1
 

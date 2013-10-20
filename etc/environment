@@ -1,2 +1,2 @@
-DOCKER_MYSQL="enter IP here"
+DOCKER_MYSQL="MySQL image ID here"
 REDIS_DNS="enter IP here"

@@ -103,3 +103,4 @@ sudo npm install grunt grunt-cli -g
 #
 
 sudo sh -c "cat ./etc/environment >> /etc/environment"
+sudo sh -c "cat ./etc/sudoers >> /etc/sudoers"
