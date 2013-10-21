@@ -77,13 +77,14 @@ sudo apt-get install -y coffeescript
 # Install hipache and redis-dns directly instead of using Jacc
 #
 
-sudo npm install hipache -g --production
 sudo npm install redis-dns -g --production
-
 sudo cp $HOME/docker/usr/lib/node_modules/redis-dns/redis-dns-config.json /usr/lib/node_modules/redis-dns
-#sudo ln -s /usr/lib/node_modules/redis-dns/bin/start.sh start-redis-dns
 sudo cp $HOME/docker/etc/init/redis-dns.conf /etc/init
 sudo service redis-dns restart
+
+sudo npm install hipache -g --production
+sudo cp $HOME/docker/usr/lib/node_modules/redis-dns/hipache-config.json /usr/lib/node_modules/hipache
+#sudo ln -s /usr/lib/node_modules/redis-dns/bin/start.sh start-redis-dns
 
 
 #
