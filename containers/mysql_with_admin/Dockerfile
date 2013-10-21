@@ -20,6 +20,21 @@ RUN apt-get install -y curl lynx git
 
 
 #
+# Install Apache and PHP
+# ---------------------
+
+RUN apt-get install -y apache2 php5 php5-curl php5-mysql 
+
+# Bundle everything and install
+ADD ./src /var/www
+ADD ./conf/etc /etc
+
+RUN cd /var/www && curl -sS https://getcomposer.org/installer | php
+RUN mv /var/www/composer.phar /var/www/composer
+RUN cd /var/www && ./composer install
+
+
+#
 # Install MySQL
 # -------------
 
@@ -35,21 +50,6 @@ RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysq
 
 # Setup admin user
 RUN /src/mysql-setup.sh
-
-
-#
-# Install Apache and PHP
-# ---------------------
-
-RUN apt-get install -y apache2 php5 php5-curl php5-mysql 
-
-# Bundle everything and install
-ADD ./src /var/www
-ADD ./conf/etc /etc
-
-RUN cd /var/www && curl -sS https://getcomposer.org/installer | php
-RUN mv /var/www/composer.phar /var/www/composer
-RUN cd /var/www && ./composer install
 
 
 EXPOSE  8080 8443 3306
