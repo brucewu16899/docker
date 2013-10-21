@@ -4,6 +4,6 @@
         "EHER/PHPUnit": "*",
         "guzzle/guzzle": "~3.2.0",
         "instaclick/php-code-sniffer": "*",
-        "imscp/phpmyadmin": "*"
+        "phpmyadmin/phpmyadmin": "dev-STABLE"
      }
 }
