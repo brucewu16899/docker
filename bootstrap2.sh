@@ -45,7 +45,7 @@ sudo apt-get install -y redis-server
 # Nifty tools
 #
 
-sudo apt-get install -y git unzip s3cmd curl dkms postgresql-client-common postgresql-client-9.1
+sudo apt-get install -y git unzip s3cmd curl dkms postgresql-client-common postgresql-client-9.1 mysql-client
 
 
 #

@@ -134,6 +134,17 @@ network-interface-security (network-interface/docker0) start/running
 ```
 
 
+```
+# get the container Id
+docker ps
+
+# Check what IP that is used
+docker inspect 12db2f882076
+
+# Setup the DNS
+redis-cli set redis-dns:dbserver.local 172.17.0.7
+```
+
 
 For CoreOS
 ----------
