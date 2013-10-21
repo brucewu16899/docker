@@ -43,8 +43,7 @@ RUN cd /var/www && curl -sS https://getcomposer.org/installer | php
 RUN mv /var/www/composer.phar /var/www/composer
 RUN cd /var/www && ./composer install
 
-ADD ./config.inc.php /var/www/vendor/phpmyadmin/phpmyadmin
+RUN cp /var/www/config.inc.php /var/www/vendor/phpmyadmin/phpmyadmin
 
 EXPOSE  8080 8443
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
