@@ -87,6 +87,44 @@ redis 127.0.0.1:6379> get redis-dns:dbserver
 Create the containers you need, MySQL, Postgres etc. There are script that can be used to setup some containers as services, see
 etc/init. Copy the scripts you need to /etc/init and update with the redis-dns IP adress and image ids (efter building the images).
 
+Example setting for MySQL
+
+
+```
+# First create the image
+cd containers/mysql
+docker build .
+...
+Successfully built 70391fd54ac4
+
+# Now, setup a container as a service
+sudo cp docker-TEMPLATE.conf /etc/init/docker-mysql.conf
+
+# Edit the configuration file
+sudo nano /etc/init/docker-mysql.conf
+...
+env CONTAINER_NAME="mysql"
+env REDIS_DNS="172.17.42.1"
+env IMAGE_ID="70391fd54ac4"
+...
+
+# Start the service and check the log file (should show a container id)
+sudo service docker-mysql start
+sudo cat /var/log/docker-mysql.log 
+
+# Check the processes
+ps -axf
+...
+1617 ?        Ss     0:00 /bin/sh -e -c /usr/bin/docker -d -H=tcp://127.0.0.1:4243 /bin/sh
+ 1618 ?        Sl     0:13  \_ /usr/bin/docker -d -H=tcp://127.0.0.1:4243
+ 2917 ?        S      0:00      \_ lxc-start -n 12db2f8820767c1b2fbd5bfc7017321299fe76cd84fa54a89984566e9306ed97 -f /var/lib/docker/containers/12db2f8820767c1b2fbd5bfc701
+ 2926 ?        S      0:00          \_ /bin/bash /src/start.sh
+ 2957 ?        S      0:00              \_ /bin/sh /usr/bin/mysqld_safe
+ 3292 ?        Sl     0:00              |   \_ /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/l
+ 3312 ?        S      0:00              \_ /usr/bin/tail -f /var/log/mysql.log
+...
+
+```
 
 
 
