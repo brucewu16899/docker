@@ -28,7 +28,7 @@ RUN apt-get install -y curl lynx git mysql-client
 # Install Apache and PHP
 #
 
-RUN apt-get install -y apache2 php5 php5-curl php5-mysql 
+RUN apt-get install -y apache2 php5 php5-curl php5-mysql php5-mcrypt
 
 
 # -----------------------------------------------------------------------------------
