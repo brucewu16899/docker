@@ -124,6 +124,13 @@ ps -axf
  3312 ?        S      0:00              \_ /usr/bin/tail -f /var/log/mysql.log
 ...
 
+# List all docker related services
+initctl list |grep docker
+docker-mysql start/running
+docker start/running, process 1617
+network-interface (docker0) start/running
+network-interface-security (network-interface/docker0) start/running
+
 ```
 
 
