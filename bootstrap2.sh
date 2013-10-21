@@ -10,7 +10,7 @@ HOME=/home/vagrant
 # Clone this repo, sharing folders don't always work
 #
 
-sudo su vagrant -c "cd ~ && git clone https://github.com/colmsjo/docker.git"
+sudo su vagrant -c "cd $HOME && git clone https://github.com/colmsjo/docker.git"
 
 
 #
@@ -102,5 +102,5 @@ sudo npm install grunt grunt-cli -g
 # Setup ubuntu env
 #
 
-sudo sh -c "cat ./etc/environment >> /etc/environment"
-sudo sh -c "cat ./etc/sudoers >> /etc/sudoers"
+sudo sh -c "cat $HOME/docker/etc/environment >> /etc/environment"
+sudo sh -c "cat $HOME/docker/etc/sudoers >> /etc/sudoers"

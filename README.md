@@ -82,9 +82,11 @@ redis 127.0.0.1:6379> get redis-dns:dbserver
 ```
 
 
-### Edit environment variables
+### Setup containers and serives
 
-Update environment varaibles with IP addresses: `sudo nano /etc/environment`
+Create the containers you need, MySQL, Postgres etc. There are script that can be used to setup some containers as services, see
+etc/init. Copy the scripts you need to /etc/init and update with the redis-dns IP adress and image ids (efter building the images).
+
 
 
 
@@ -101,6 +103,7 @@ For CoreOS
 Tips and tricks
 --------------
 
+1. A `vagrant reload` is often needed after the initial `vagrant up`. Running the bootstrap2.sh script manually is also possible (iot can be executed several times). 
 1. Often, docker will consume the disk when several images are built. The way to check what images that consumes the disk space is:
  * containers - `sudo sh -c "ls -d /var/lib/docker/containers/* | xargs du -h -s | sort"`
  * All containers are showed with `docker ps -a` (also those that are stopped)
