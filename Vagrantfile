@@ -49,6 +49,7 @@ Vagrant.configure("2") do |config|
 #    vb_config.vm.network :public_network
     vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 8069, host: 8069, auto_correct: true
+
     vb_config.vm.network :forwarded_port, guest: 49150, host: 49150, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49151, host: 49151, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49152, host: 49152, auto_correct: true
@@ -59,6 +60,7 @@ Vagrant.configure("2") do |config|
     vb_config.vm.network :forwarded_port, guest: 49157, host: 49157, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49158, host: 49158, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49159, host: 49159, auto_correct: true
+
     vb_config.vm.network :forwarded_port, guest: 49160, host: 49160, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49161, host: 49161, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49162, host: 49162, auto_correct: true
@@ -69,7 +71,39 @@ Vagrant.configure("2") do |config|
     vb_config.vm.network :forwarded_port, guest: 49167, host: 49167, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49168, host: 49168, auto_correct: true
     vb_config.vm.network :forwarded_port, guest: 49169, host: 49169, auto_correct: true
+
     vb_config.vm.network :forwarded_port, guest: 49170, host: 49170, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49171, host: 49171, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49172, host: 49172, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49173, host: 49173, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49174, host: 49174, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49175, host: 49175, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49176, host: 49176, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49177, host: 49177, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49178, host: 49178, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49179, host: 49179, auto_correct: true
+
+    vb_config.vm.network :forwarded_port, guest: 49180, host: 49180, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49181, host: 49181, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49182, host: 49182, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49183, host: 49183, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49184, host: 49184, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49185, host: 49185, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49186, host: 49186, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49187, host: 49187, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49188, host: 49188, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49189, host: 49189, auto_correct: true
+
+    vb_config.vm.network :forwarded_port, guest: 49190, host: 49190, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49191, host: 49191, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49192, host: 49192, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49193, host: 49193, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49194, host: 49194, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49195, host: 49195, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49196, host: 49196, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49197, host: 49197, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49198, host: 49198, auto_correct: true
+    vb_config.vm.network :forwarded_port, guest: 49199, host: 49199, auto_correct: true
 
     vb_config.vm.provision :shell, :path => "bootstrap.sh"
     vb_config.vm.provision :shell, :path => "bootstrap2.sh"
