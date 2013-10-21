@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -dns=$REDIS_DNS -d $DOCKER_PHPMYADMIN
+docker -H='tcp://127.0.0.1:4243' run -dns=$REDIS_DNS -d $DOCKER_PHPMYADMIN
