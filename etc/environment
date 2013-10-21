@@ -1,2 +1,3 @@
-DOCKER_MYSQL="MySQL image ID here"
+DOCKER_PHP="Enter docker PHP image id here"
+DOCKER_MYSQL="Emter docker MySQL image ID here"
 REDIS_DNS="enter IP here"

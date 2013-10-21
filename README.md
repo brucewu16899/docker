@@ -133,6 +133,7 @@ network-interface-security (network-interface/docker0) start/running
 
 ```
 
+Setup DNS for the container:
 
 ```
 # get the container Id
@@ -142,8 +143,18 @@ docker ps
 docker inspect 12db2f882076
 
 # Setup the DNS
-redis-cli set redis-dns:dbserver.local 172.17.0.7
+redis-cli set redis-dns:mysql.local 172.17.0.7
 ```
+
+Save the image IDs:
+
+```
+sudo nano /etc/environment
+DOCKER_MYSQL="MySQL image ID here"
+REDIS_DNS="enter IP here"
+DOCKER_PHP="Enter docker image ID here"
+```
+
 
 
 For CoreOS
