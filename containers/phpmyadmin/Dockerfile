@@ -21,7 +21,7 @@ MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 # Install some nice tools (mainly used for debugging)
 #
 
-RUN apt-get install -y curl lynx git
+RUN apt-get install -y curl lynx git mysql-client
 
 
 #
