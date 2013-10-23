@@ -141,10 +141,10 @@ Vagrant.configure("2") do |config|
     vb_config.vm.box = "arch"
 
     # 32-bit
-    vb_config.vm.box_url = "https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box"
+#    vb_config.vm.box_url = "https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box"
 
     # 64-bit 
-#    vb_config.vm.box_url = "https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box"
+    vb_config.vm.box_url = "https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box"
   end
 
 
