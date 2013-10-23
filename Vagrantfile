@@ -129,4 +129,24 @@ Vagrant.configure("2") do |config|
     vb_config.vm.box_url = "http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box"
   end
 
+
+  #
+  # Arch linux
+  #
+
+  config.vm.define :arch do |vb_config|
+
+    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+
+    vb_config.vm.box = "arch"
+
+    # 32-bit
+    vb_config.vm.box_url = "https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box"
+
+    # 64-bit 
+#    vb_config.vm.box_url = "https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box"
+  end
+
+
+
 end
