@@ -46,7 +46,7 @@ ADD ./conf/etc /etc
 RUN cd /var/www; tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
 RUN rm /var/www/index.html
 
-ADD ./config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.ini.php
+ADD ./config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
  
 #RUN mv /tmp/config.inc.php /var/www
 
