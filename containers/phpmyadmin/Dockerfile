@@ -48,9 +48,9 @@ ADD ./conf/etc /etc
 #RUN cd /var/www && ./composer install
 #RUN cp /var/www/config.inc.php /var/www/vendor/phpmyadmin/phpmyadmin
 
-RUN wget -O phpMyAdmin-4.0.8-all-languages.tar.gz http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.0.8/phpMyAdmin-4.0.8-all-languages.tar.gz?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Fdownloads.php&ts=1382555887&use_mirror=garr
-RUN tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
-RUN mv phpMyAdmin-4.0.8-all-languages/* /var/www 
+RUN cd / && wget -O phpMyAdmin-4.0.8-all-languages.tar.gz http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.0.8/phpMyAdmin-4.0.8-all-languages.tar.gz?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Fdownloads.php&ts=1382555887&use_mirror=garr
+RUN cd / && tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
+RUN cd / && mv phpMyAdmin-4.0.8-all-languages/* /var/www 
 RUN rm /var/www/index.html 
 
 
