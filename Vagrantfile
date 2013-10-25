@@ -137,6 +137,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :arch do |vb_config|
 
     vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+#    vb_config.vm.network :private_network, ip: "192.168.111.2"
 
     vb_config.vm.box = "arch"
 
@@ -145,6 +146,20 @@ Vagrant.configure("2") do |config|
 
     # 64-bit 
     vb_config.vm.box_url = "https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box"
+  end
+
+
+
+  #
+  # Arch linux
+  #
+
+  config.vm.define :gentoo do |vb_config|
+
+    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+    vb_config.vm.box = "gentoo"
+    vb_config.vm.box_url = "https://lxmx-vm.s3.amazonaws.com/vagrant/boxes/lxmx_gentoo-2013.05_chef-11.4.4.box"
+
   end
 
 
