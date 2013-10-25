@@ -124,7 +124,6 @@ Vagrant.configure("2") do |config|
 
 #    vb_config.vm.network :public_network
     vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
-
     vb_config.vm.box = "coreos"
     vb_config.vm.box_url = "http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box"
   end
@@ -135,33 +134,22 @@ Vagrant.configure("2") do |config|
   #
 
   config.vm.define :arch do |vb_config|
-
-    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
-#    vb_config.vm.network :private_network, ip: "192.168.111.2"
-
+    vb_config.vm.network :public_network
     vb_config.vm.box = "arch"
-
-    # 32-bit
-#    vb_config.vm.box_url = "https://dl.dropboxusercontent.com/u/31112574/arch64-20130801.box"
-
-    # 64-bit 
     vb_config.vm.box_url = "https://downloads.sourceforge.net/project/vagrant-archlinux/vagrant-archlinux.box"
   end
 
 
-
   #
-  # Arch linux
+  # Gentoo linux
   #
 
   config.vm.define :gentoo do |vb_config|
 
-    vb_config.vm.network :forwarded_port, guest: 8080, host: 8080, auto_correct: true
+    vb_config.vm.network :public_network
     vb_config.vm.box = "gentoo"
     vb_config.vm.box_url = "https://lxmx-vm.s3.amazonaws.com/vagrant/boxes/lxmx_gentoo-2013.05_chef-11.4.4.box"
-
+#    vb_config.vm.box_url = "https://seedrs.box.com/shared/static/6cg94mkdtuz3baoy8zl8.box"
   end
-
-
 
 end
