@@ -14,8 +14,9 @@ HOME=/home/vagrant
 sudo su vagrant -c "cd $HOME && git clone https://github.com/colmsjo/docker.git"
 
 # Turn off protection of config files, install systemd etc.
-sudo cp ./etc/portage/make.conf   /etc/portage/
-sudo cp ./etc/portage/package.use /etc/portage/
+sudo cp ./gentoo/etc/portage/make.conf   /etc/portage/
+sudo cp ./gentoo/etc/portage/package.use /etc/portage/
+sudo cp ./gentoo/boot/grub/grub.conf     /boot/grub/
 
 #sudo su -c 'echo CONFIG_PROTECT=\"-*\" >> /etc/portage/make.conf'
 
