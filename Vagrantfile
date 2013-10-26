@@ -152,4 +152,11 @@ Vagrant.configure("2") do |config|
 #    vb_config.vm.box_url = "https://seedrs.box.com/shared/static/6cg94mkdtuz3baoy8zl8.box"
   end
 
+
+  config.vm.provider :virtualbox do |vb|
+#    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "2"]
+  end
+
+
 end
