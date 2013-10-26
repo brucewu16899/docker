@@ -19,6 +19,9 @@ sudo su -c 'echo CONFIG_PROTECT=\"-*\" >> /etc/portage/make.conf'
 # Download latest version of repository
 sudo emerge --sync
 
+# Update portage itself first
+sudo emerge --oneshot portage
+
 # Install kernel sources, needed for the world update (compile) below
 sudo emerge sys-kernel/gentoo-sources
 
@@ -32,7 +35,7 @@ sudo su -c 'echo =dev-libs/openssl-1.0.1e-r1 bindist >> /etc/portage/package.use
 # Generate kernel options
 sudo genkernel all --bootloader=grub all
 
-# Update everything
+# Update everything and install systemd at the same time
 sudo emerge --update world
 
 
