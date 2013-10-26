@@ -1,0 +1,5 @@
+sys-fs/aufs3 kernel-patch
+sys-kernel/gentoo-sources symlink
+sys-kernel/genkernel -cryptsetup
+sys-apps/dbus -systemd
+=dev-libs/openssl-1.0.1e-r1 bindist

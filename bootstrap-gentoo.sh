@@ -13,24 +13,27 @@ HOME=/home/vagrant
 # Clone this repo, sharing folders don't always work
 sudo su vagrant -c "cd $HOME && git clone https://github.com/colmsjo/docker.git"
 
-# Turn off protection of config files
-sudo su -c 'echo CONFIG_PROTECT=\"-*\" >> /etc/portage/make.conf'
+# Turn off protection of config files, install systemd etc.
+sudo cp ./etc/portage/make.conf   /etc/portage/
+sudo cp ./etc/portage/package.use /etc/portage/
 
-# Download latest version of repository
-sudo emerge --sync
+#sudo su -c 'echo CONFIG_PROTECT=\"-*\" >> /etc/portage/make.conf'
 
 # Update portage itself first
 sudo emerge --oneshot portage
+
+# Download latest version of repository
+sudo emerge --sync
 
 # Install kernel sources, needed for the world update (compile) below
 sudo emerge sys-kernel/gentoo-sources
 
 # Install systemd
 sudo ln -sf /proc/self/mounts /etc/mtab
-sudo su -c 'echo USE=\"systemd symlink -consolekit\" >> /etc/portage/make.conf'
 
-sudo su -c 'echo sys-apps/dbus -systemd >> /etc/portage/package.use'
-sudo su -c 'echo =dev-libs/openssl-1.0.1e-r1 bindist >> /etc/portage/package.use'
+#sudo su -c 'echo USE=\"systemd symlink -consolekit\" >> /etc/portage/make.conf'
+#sudo su -c 'echo sys-apps/dbus -systemd >> /etc/portage/package.use'
+#sudo su -c 'echo =dev-libs/openssl-1.0.1e-r1 bindist >> /etc/portage/package.use'
 
 # Generate kernel options
 sudo genkernel all --bootloader=grub all
