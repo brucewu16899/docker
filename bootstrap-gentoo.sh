@@ -14,7 +14,9 @@ HOME=/home/vagrant
 sudo su vagrant -c "cd $HOME && git clone https://github.com/colmsjo/docker.git"
 
 # Turn off protection of config files, install systemd etc.
-sudo cp ./gentoo/etc/portage/make.conf   /etc/portage/
+sudo rm /etc/portage/make.profile
+sudo cp ./gentoo/etc/portage/make.conf   /usr/portage/profiles/
+sudo ln -s /usr/portage/profiles/make.conf /etc/portage/make.profile
 sudo cp ./gentoo/etc/portage/package.use /etc/portage/
 sudo cp ./gentoo/boot/grub/grub.conf     /boot/grub/
 
@@ -25,6 +27,11 @@ sudo emerge --oneshot portage
 
 # Download latest version of repository
 sudo emerge --sync
+
+# Needed to setup boot and grub
+#sudo emerge sys-apps/gptfdisk
+# Alternative to fdisk
+sudo emerge sys-block/parted
 
 # Install kernel sources, needed for the world update (compile) below
 sudo emerge sys-kernel/gentoo-sources
