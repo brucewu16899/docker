@@ -12,16 +12,20 @@ RUN ln -s /bin/true /sbin/initctl
 
 RUN apt-get update
 
+
+#
+# Install supervidord (used to handle processes)
+#
+
+RUN apt-get install -y supervisor
+ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
 #
 # Install Apache and PHP
 #
 
 RUN apt-get install -y apache2 php5 php5-curl php5-mysql php5-mcrypt
-
-
-# -----------------------------------------------------------------------------------
-# SETUP THE APP
-#
 
 # Bundle everything and install
 ADD ./src /var/www
@@ -30,9 +34,12 @@ ADD ./conf/etc /etc
 RUN cd /var/www; tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
 RUN rm /var/www/index.html
 
-ADD ./config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
+ADD ./src/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
 
 
+#
+# Install MySQL
+#
 
 # Bundle everything
 ADD ./src2 /src
@@ -47,4 +54,4 @@ RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysq
 RUN /src/mysql-setup.sh
 
 EXPOSE 3306 8080 8443
-CMD ["/src/start.sh"]
+CMD ["supervisord","-n"]
