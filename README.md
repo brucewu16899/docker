@@ -79,6 +79,7 @@ redis 127.0.0.1:6379> keys *
 1) "redis-dns:dbserver"
 redis 127.0.0.1:6379> get redis-dns:dbserver
 "172.17.42.100"
+redis 127.0.0.1:6379> del redis-dns:dbserver
 ```
 
 
