@@ -7,7 +7,7 @@
 # redis-cli rpush frontend:www.gizur.com http://[IP ADDRESS]:8080
 #
 
-[[ -n "$1" ]] || { echo "Usage: start.sh <docker container id> <web app address> <port>"; exit 0 ; }
+[[ $# -ne 3 ]] || { echo "Usage: start.sh <docker container id> <web app address> <port>"; exit 0 ; }
 
 
 #CONTAINER_ID=$(docker run -d -dns=$REDIS_DNS $1)
