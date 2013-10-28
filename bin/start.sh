@@ -20,5 +20,5 @@ fi
 CONTAINER_ID=$(/usr/bin/docker -H=tcp://127.0.0.1:4243 run -d  $1)
 redis-cli del frontend:$2
 redis-cli rpush frontend:$2 $2
-IPADDRESS=$(docker inspect $CONTAINER_ID|grep IPAddress|cut -c 23-33)
+IPADDRESS=$(/usr/bin/docker -H=tcp://127.0.0.1:4243 inspect $CONTAINER_ID|grep IPAddress|cut -c 23-33)
 redis-cli rpush frontend:$2 http://$IPADDRESS:$3
