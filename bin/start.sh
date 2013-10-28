@@ -7,7 +7,7 @@
 # redis-cli rpush frontend:www.gizur.com http://[IP ADDRESS]:8080
 #
 
-if [ $# -ne 4 ]
+if [ $# -ne 3 ] 
 then
   echo "Usage: `basename $0` <docker container id> <web app address> <port>"
   exit 0
