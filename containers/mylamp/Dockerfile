@@ -29,7 +29,7 @@ RUN apt-get install -y apache2 php5 php5-curl php5-mysql php5-mcrypt
 RUN a2enmod rewrite
 
 # Bundle everything and install
-ADD ./src /var/www
+ADD ./src-phpmyadmin /var/www
 ADD ./conf/etc /etc
 
 RUN cd /var/www; tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
@@ -42,7 +42,7 @@ ADD ./src/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
 # Install Wordpress
 #
 
-ADD ./src3 /var/www
+#ADD ./src-wordpress /var/www
 
 
 #
@@ -50,7 +50,9 @@ ADD ./src3 /var/www
 #
 
 # Bundle everything
-ADD ./src2 /src
+ADD ./src-mysql /src
+
+# Load wordpress SQL dump
 ADD ./sql-script/latest.sql /sql-script/latest.sql
 
 # Install MySQL server
