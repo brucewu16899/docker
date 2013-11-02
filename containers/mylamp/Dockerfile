@@ -42,7 +42,7 @@ ADD ./src-phpmyadmin/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/conf
 # Install Wordpress
 #
 
-#ADD ./src-wordpress /var/www
+ADD ./src-wordpress /var/www
 
 
 #
@@ -50,7 +50,7 @@ ADD ./src-phpmyadmin/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/conf
 #
 
 # Bundle everything
-ADD ./src-mysql /src
+ADD ./src-mysql /src-mysql
 
 # Load wordpress SQL dump
 ADD ./sql-script/latest.sql /sql-script/latest.sql
