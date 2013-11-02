@@ -35,7 +35,7 @@ ADD ./conf/etc /etc
 RUN cd /var/www; tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
 RUN rm /var/www/index.html
 
-ADD ./src/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
+ADD ./src-phpmyadmin/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
 
 
 #
@@ -62,7 +62,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server && apt-get cl
 RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
 
 # Setup admin user
-RUN /src/mysql-setup.sh
+RUN /src-mysql/mysql-setup.sh
 
 EXPOSE 3306 80 443
 CMD ["supervisord","-n"]
