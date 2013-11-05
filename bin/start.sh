@@ -19,7 +19,7 @@ echo "Running: /usr/bin/docker -H=tcp://127.0.0.1:4243 run -d  $1"
 CONTAINER_ID=$(/usr/bin/docker -H=tcp://127.0.0.1:4243 run -d  $1)
 echo "Got container id: $CONTAINER_ID"
 
-IPADDRESS=$(/usr/bin/docker -H=tcp://127.0.0.1:4243 inspect $CONTAINER_ID|grep IPAddress|cut -c 23-32)
+IPADDRESS=$(/usr/bin/docker -H=tcp://127.0.0.1:4243 inspect $CONTAINER_ID|grep IPAddress|cut -c 23-33)
 echo "Received IP Address: $IPADDRESS"
 
 redis-cli del frontend:$2
