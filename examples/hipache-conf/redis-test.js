@@ -20,15 +20,16 @@ redis_client.on("connect", function () {
     });
 
     redis_client.keys("*", redis.print);
-    redis_client.keys("*", function(err, keys) {
+    redis_client.keys("*", function(err, res) {
 
-            console.log('_proxyStatus: redis keys - ' + keys);
+            console.log('_proxyStatus: redis keys - ' + res);
 
-            for(key in keys) {
-                redis_client.lrange(key, 0,-1, function(err,res) {
-			console.log(key + ' - ' + res);
+            res.forEach(function(k,i) {
+                console.log('_proxyStatus: redis key - ' + k);
+                redis_client.lrange(k, 0,-1, function(err,res) {
+			console.log(k + ' - ' + res);
 	        });
-            }
+            });
    });
 
    //redis_client.del("frontend:www.dotcloud.com", redis.print);
