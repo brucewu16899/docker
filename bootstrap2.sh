@@ -63,7 +63,8 @@ sudo apt-get install -y nodejs
 # Install CoffeeScript
 #
 
-sudo apt-get install -y coffeescript
+#sudo apt-get install -y coffeescript
+sudo npm install coffee-script -g production
 
 
 #
