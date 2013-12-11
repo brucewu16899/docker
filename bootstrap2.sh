@@ -34,22 +34,16 @@ sudo cp $HOME/docker/etc/init/docker.conf /etc/init
 sudo su vagrant -c "echo alias docker=\'docker -H=tcp://127.0.0.1:4243\' >> $HOME/.profile"
 sudo service docker restart
 
-#
-# Install redis, used by hipache and redis-dns
-#
-
-sudo apt-get install -y redis-server
-
 
 #
 # Nifty tools
 #
 
-sudo apt-get install -y git unzip s3cmd curl dkms postgresql-client-common postgresql-client-9.1 mysql-client supervisor
+sudo apt-get install -y git unzip s3cmd curl dkms postgresql-client-common postgresql-client-9.1 mysql-client 
 
 
 #
-# Install NodeJs
+# Install NodeJs, grunt and Coffeescript
 #
 
 sudo apt-get update -y
@@ -58,47 +52,16 @@ sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update -y
 sudo apt-get install -y nodejs
 
-
-#
-# Install CoffeeScript
-#
-
-#sudo apt-get install -y coffeescript
+sudo npm install grunt grunt-cli -g
 sudo npm install coffee-script -g production
 
 
 #
-# Install NodeJs Jacc
+# Install NodeJs Jacc and redis
 #
 
-#sudo npm install jacc -g
-
-
-#
-# Install hipache and redis-dns directly instead of using Jacc
-#
-
-sudo npm install redis-dns -g --production
-sudo cp $HOME/docker/usr/lib/node_modules/redis-dns/redis-dns-config.json /usr/lib/node_modules/redis-dns
-sudo cp $HOME/docker/etc/init/redis-dns.conf /etc/init
-sudo service redis-dns restart
-
-sudo npm install hipache -g --production
-sudo cp $HOME/docker/usr/lib/node_modules/hipache/hipache-config.json /usr/lib/node_modules/hipache
-sudo cp $HOME/docker/etc/init/hipache.conf /etc/init
-sudo service hipache restart
-
-
-#
-# Install grunt, used for nodejs development
-#
-
-sudo npm install grunt grunt-cli -g
-
-
-# Use the local nameserver and then google's
-# NOTE: sometimes usefull when using mobile broadband
-#sudo sh -c 'echo "dns-nameservers localhost 8.8.8.8" >> /etc/network/interfaces'
+# sudo apt-get install -y redis-server supervisor
+# sudo npm install jacc -g
 
 
 #

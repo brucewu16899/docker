@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add the Docker repository key to your local keychain
-sudo sh -c "curl https://get.docker.io/gpg | apt-key add -"
+sudo sh -c "curl -k https://get.docker.io/gpg | apt-key add -"
 
 # Add the Docker repository to your apt sources list.
 sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
