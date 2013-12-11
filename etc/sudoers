@@ -1,4 +1,0 @@
-
-# JC, Added for docker setup
-Defaults env_keep +="DOCKER_MYSQL"
-Defaults env_keep +="REDIS_DNS"
