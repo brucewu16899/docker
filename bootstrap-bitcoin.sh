@@ -5,6 +5,6 @@
 
 
 # For Precise 12.04
-echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu precise main" >> /etc/apt/sources.list 
-echo "deb-src http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu precise main" >> /etc/apt/sources.list
+sudo echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu precise main" >> /etc/apt/sources.list 
+sudo echo "deb-src http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu precise main" >> /etc/apt/sources.list
 
