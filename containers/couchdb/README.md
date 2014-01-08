@@ -15,3 +15,5 @@ curl -X PUT $HOST/_config/cors/headers -d '"accept, authorization, content-type,
 ```
 
 Use kanso etc. to deploy couchapps: `sudo npm install -g kanso`
+
+Open the admin app, Futon, http://<IP>:5984/_utils
