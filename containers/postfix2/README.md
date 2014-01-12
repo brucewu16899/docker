@@ -86,10 +86,11 @@ quit
 Node POP3 client
 ---------------
 
+A small test wit a node POP3 client:
 
 ```
-cd pop3-client
-node node_modules/poplib/demos/demo.js -host <IP> --port 110 --username fmaster --password password --debug on --networkdebug on
-
-
+cd pop3-client && npm install
+cd node_modules
+# edit demos/basic.js and set HOSTNAME, USERNAME and PASSWORD
+node demos/basic.js
 ```
