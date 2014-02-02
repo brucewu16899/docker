@@ -33,7 +33,6 @@ Vagrant.configure("2") do |config|
     vb_config.vm.network :forwarded_port, guest: 8098, host: 8098, auto_correct: true
 
     vb_config.vm.provision :shell, :path => "bootstrap.sh"
-    vb_config.vm.provision :shell, :path => "bootstrap2.sh"
   end
 
 
