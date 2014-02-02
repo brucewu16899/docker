@@ -5,20 +5,15 @@
 # Images for the containers are built with Dockerfiles (see at the bottom)
 #
 
-sudo apt-get update
-
-#
-# Kernel upgrade
-#
-
-sudo apt-get install -y linux-image-generic-lts-raring
-#!/usr/bin/env bash
-
 #
 # Varaibles used below
 #
 
 HOME=/home/vagrant
+
+
+sudo apt-get update
+
 
 #
 # Clone this repo, sharing folders don't always work
@@ -26,13 +21,6 @@ HOME=/home/vagrant
 
 sudo su vagrant -c "cd $HOME && git clone https://github.com/colmsjo/docker.git"
 
-
-#
-# This script installs the necessary stuff for the docker host.
-# Images for the containers are built with Dockerfiles (see at the bottom)
-#
-
-sudo apt-get update
 
 #
 # Install docker.io
@@ -53,34 +41,57 @@ sudo service docker restart
 # Nifty tools
 #
 
-sudo apt-get install -y git unzip s3cmd curl dkms postgresql-client-common postgresql-client-9.1 mysql-client 
+sudo apt-get install -y git unzip s3cmd curl
+#dkms postgresql-client-common postgresql-client-9.1 mysql-client
+
+
+
+#
+# install and configure nodejs
+#
+
+#sudo apt-get -y install nodejs npm
+
+# install nvm for root
+sudo sh -c "wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh"
+
+# update nodejs for root
+sudo sh -c "source ~/.nvm/nvm.sh && nvm install v0.11.2"
+sudo sh -c "source ~/.nvm/nvm.sh && nvm use v0.11.2"
+
+
+# Install nvm - Node version manager for the vagrant user
+su - vagrant -c "wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh"
+
+# Install nodejs versions for vagrant user
+su - vagrant -c "source ~/.nvm/nvm.sh && nvm install v0.8.0"
+su - vagrant -c "source ~/.nvm/nvm.sh && nvm install v0.11.2"
+su - vagrant -c "source ~/.nvm/nvm.sh && nvm use v0.11.2"
 
 
 #
 # Install NodeJs, grunt and Coffeescript
 #
 
-sudo apt-get update -y
-sudo apt-get install -y python g++ make software-properties-common
-sudo add-apt-repository -y ppa:chris-lea/node.js
-sudo apt-get update -y
-sudo apt-get install -y nodejs
+#sudo apt-get update -y
+#sudo apt-get install -y python g++ make software-properties-common
+#sudo add-apt-repository -y ppa:chris-lea/node.js
+#sudo apt-get update -y
+#sudo apt-get install -y nodejs
 
-sudo npm install grunt grunt-cli -g
-sudo npm install coffee-script -g production
+#sudo npm install grunt grunt-cli -g
+#sudo npm install coffee-script -g production
 
 
-#
-# Install NodeJs Jacc and redis
-#
 
-# sudo apt-get install -y redis-server supervisor
-# sudo npm install jacc -g
+#-----------------------------------------------------
+# At bottom, manual reboot needed after this
 
 
 #
-# Setup ubuntu env
+# Kernel upgrade
 #
 
-sudo sh -c "cat $HOME/docker/etc/environment >> /etc/environment"
-sudo sh -c "cat $HOME/docker/etc/sudoers >> /etc/sudoers"
+sudo apt-get install -y linux-image-generic-lts-raring
+
+
