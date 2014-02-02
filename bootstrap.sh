@@ -26,15 +26,29 @@ sudo su vagrant -c "cd $HOME && git clone https://github.com/colmsjo/docker.git"
 # Install docker.io
 #
 
-sudo apt-get install -y python-software-properties software-properties-common python-pip python-dev libevent-dev
-sudo add-apt-repository ppa:dotcloud/lxc-docker
-sudo apt-get update
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y lxc-docker
+#sudo apt-get install -y python-software-properties software-properties-common python-pip python-dev libevent-dev
+#sudo add-apt-repository ppa:dotcloud/lxc-docker
+#sudo apt-get update
+#DEBIAN_FRONTEND=noninteractive sudo apt-get install -y lxc-docker
 
 # Need to run docker with other flags, this file need to be updated once the machine is up
-sudo cp $HOME/docker/etc/init/docker.conf /etc/init
+#sudo cp $HOME/docker/etc/init/docker.conf /etc/init
 sudo su vagrant -c "echo alias docker=\'docker -H=tcp://127.0.0.1:4243\' >> $HOME/.profile"
-sudo service docker restart
+#sudo service docker restart
+
+
+# Add the Docker repository key to your local keychain
+sudo sh -c "curl -k https://get.docker.io/gpg | apt-key add -"
+
+# Add the Docker repository to your apt sources list.
+sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+
+# update your sources list
+sudo apt-get update
+
+# install the latest
+sudo apt-get install -y lxc-docker
+
 
 
 #
