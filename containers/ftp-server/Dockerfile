@@ -21,7 +21,8 @@ ADD . /src
 RUN /src/init-node.sh
 
 RUN npm install ftp-server ftp-test-server
-RUN pip install pyftpdlib
+RUN pip-3.2 install pyftpdlib
+
 
 EXPOSE 20 21
 CMD ["node","/src/quick-ftp.js"]
