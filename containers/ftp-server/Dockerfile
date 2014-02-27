@@ -19,7 +19,7 @@ ADD . /src
 
 RUN /src/init-node.sh
 
-RUN npm install ftp-server
+RUN npm install ftp-server ftp-test-server
 
 EXPOSE 20 21
-CMD ["node","/src/ftp-server.js"]
+CMD ["node","/src/quick-ftp.js"]
