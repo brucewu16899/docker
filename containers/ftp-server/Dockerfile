@@ -10,4 +10,4 @@ RUN apt-get update
 RUN apt-get install -y curl git wzdftpd
 
 EXPOSE 20 21
-CMD ["/usr/sbin/wzdftpd",""]
+CMD ["/usr/sbin/wzdftpd","-s"]
