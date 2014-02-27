@@ -7,7 +7,7 @@ MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 
 
 RUN apt-get update
-RUN apt-get install -y curl git ftpd
+RUN apt-get install -y curl git wzdftpd
 
 EXPOSE 20 21
-CMD ["/sbin/ftpd",""]
+CMD ["/usr/sbin/wzdftpd",""]
