@@ -17,7 +17,7 @@ RUN /bin/bash -c "source /.profile && nvm install v0.11.2"
 
 ADD . /src
 
-#RUN /src/init-node.sh
+RUN /src/init-node.sh
 
 RUN npm install -g ftp-server
 
