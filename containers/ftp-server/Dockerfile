@@ -8,6 +8,7 @@ MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 
 RUN apt-get update
 RUN apt-get install -y curl git
+apt-get install -y python3-pip
 
 # Install NodeJS
 
@@ -20,6 +21,7 @@ ADD . /src
 RUN /src/init-node.sh
 
 RUN npm install ftp-server ftp-test-server
+RUN pip install pyftpdlib
 
 EXPOSE 20 21
 CMD ["node","/src/quick-ftp.js"]
