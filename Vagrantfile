@@ -52,21 +52,12 @@ tmp=`mktemp -q` && {
     rm "$tmp"
 }
 
-# If the number of installed packages is greater than 0, we want to reboot (the
-# backport kernel was installed but is not running).
-if [ "$NUM_INST" -gt 0 ];
-then
-    echo "Rebooting down to activate new kernel."
-    echo "/vagrant will not be mounted.  Use 'vagrant halt' followed by"
-    echo "'vagrant up' to ensure /vagrant is mounted."
-    shutdown -r now
-fi
-
 
 #--------------------------------------------------------------------------
 # Jonas C.
 #
 
+su vagrant -c "echo alias docker=\'docker -H=tcp://127.0.0.1:4243\' >> $HOME/.profile"
 
 #
 # Varaibles used below
@@ -103,6 +94,17 @@ su vagrant -c "cd $HOME && source $HOME/.nvm/nvm.sh && nvm use v0.11.2"
 
 
 #--------------------------------------------------------------------------
+
+
+# If the number of installed packages is greater than 0, we want to reboot (the
+# backport kernel was installed but is not running).
+if [ "$NUM_INST" -gt 0 ];
+then
+    echo "Rebooting down to activate new kernel."
+    echo "/vagrant will not be mounted.  Use 'vagrant halt' followed by"
+    echo "'vagrant up' to ensure /vagrant is mounted."
+    shutdown -r now
+fi
 
 SCRIPT
 
