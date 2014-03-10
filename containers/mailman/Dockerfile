@@ -61,10 +61,10 @@ run cat /etc-postfix-main.cf >> /etc/postfix/main.cf
 #
 
 # Keep upstart from complaining
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -s /bin/true /sbin/initctl
+#RUN dpkg-divert --local --rename --add /sbin/initctl
+#RUN ln -s /bin/true /sbin/initctl
 
-RUN apt-get update
+#RUN apt-get update
 
 
 #
