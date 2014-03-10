@@ -32,7 +32,8 @@ run chown someone:mail /var/spool/mail/someone
 
 add etc-aliases.txt /etc/aliases
 #run chown root:root /etc/aliases
-run rm /etc/aliases.db
+#run rm /etc/aliases.db
+run /bin/sh -d "cd /etc; postmap aliases"
 run newaliases
 
 # Use syslog-ng to get Postfix logs (rsyslog uses upstart which does not seem
