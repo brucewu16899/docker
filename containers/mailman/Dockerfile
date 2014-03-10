@@ -87,7 +87,7 @@ RUN apt-get install -y apache2
 #
 
 RUN wget https://launchpad.net/mailman/3.0/3.0.0b3/+download/mailman-3.0.0b3.tar.gz
-RUN tar -xfz mailman-3.0.0b3.tar.gz
+RUN tar -xzf mailman-3.0.0b3.tar.gz
 
 expose 25
 cmd ["sh", "-c", "service syslog-ng start ; service postfix start ; tail -F /var/log/mail.log"]
