@@ -32,7 +32,7 @@ run chown someone:mail /var/spool/mail/someone
 
 add etc-aliases.txt /etc/aliases
 #run chown root:root /etc/aliases
-#run newaliases
+run newaliases
 
 # Use syslog-ng to get Postfix logs (rsyslog uses upstart which does not seem
 # to run within Docker).
@@ -86,8 +86,23 @@ RUN apt-get install -y apache2
 # Install mailman
 #
 
-RUN wget https://launchpad.net/mailman/3.0/3.0.0b3/+download/mailman-3.0.0b3.tar.gz
-RUN tar -xzf mailman-3.0.0b3.tar.gz
+#run echo "postfix postfix/mailname string mail.example.com" > preseed.txt
+#run debconf-set-selections preseed.txt
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mailman
+
+#run echo "postfix postfix/mailname string mail.example.com" > preseed.txt
+#run debconf-set-selections preseed.txt
+RUN newlist mailman
+
+#RUN groupadd mailman
+#RUN useradd -c "GNU Mailman" -s /no/shell -d /no/home -g mailman mailman
+#RUN mkdir -p /usr/local/mailman
+#RUN cd /usr/local/mailman; chgrp mailman .; chmod a+rx,g+ws .
+
+#RUN wget https://launchpad.net/mailman/3.0/3.0.0b3/+download/mailman-3.0.0b3.tar.gz
+#RUN tar -xzf mailman-3.0.0b3.tar.gz
+
+#RUN sudo su mailman -c "cd /usr/local/mailman/mailman-3.0.0b3; ./configure; man install"
 
 expose 25
-cmd ["sh", "-c", "service syslog-ng start ; service postfix start ; tail -F /var/log/mail.log"]
+cmd ["sh", "-c", "service syslog-ng start ; service postfix start ; /usr/lib/mailman/bin/mailmanctl start; tail -F /var/log/mailman/*"]
