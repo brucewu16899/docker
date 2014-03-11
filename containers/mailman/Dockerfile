@@ -141,4 +141,4 @@ RUN newaliases
 #RUN sudo su mailman -c "cd /usr/local/mailman/mailman-3.0.0b3; ./configure; man install"
 
 expose 25 80
-cmd ["sh", "-c", "service syslog-ng start ; service postfix start ; /usr/lib/mailman/bin/mailmanctl start; tail -F /var/log/mailman/*"]
+cmd ["sh", "-c", "service syslog-ng start ; service postfix start ; /etc/init.d/supervisor start; /usr/lib/mailman/bin/mailmanctl start; tail -F /var/log/mailman/*"]

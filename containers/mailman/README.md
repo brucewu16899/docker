@@ -10,4 +10,5 @@ Mailman installation procedure:
  * https://help.ubuntu.com/community/Mailman
  * http://list.org/mailman-install/front.html
 
+Open the web admin UI: curl http://<IP>/cgi-bin/mailman/admin
 
