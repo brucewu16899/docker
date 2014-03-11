@@ -32,10 +32,10 @@ run chown someone:mail /var/spool/mail/someone
 
 add etc-aliases.txt /etc/aliases
 #run chown root:root /etc/aliases
-run rm /etc/aliases.db
-run touch /etc/aliases.db
+#run rm /etc/aliases.db
+#run touch /etc/aliases.db
 # run /bin/sh -c "cd /etc; postmap aliases"
-run newaliases
+#run newaliases
 
 # Use syslog-ng to get Postfix logs (rsyslog uses upstart which does not seem
 # to run within Docker).
@@ -93,9 +93,42 @@ RUN apt-get install -y apache2
 #run debconf-set-selections preseed.txt
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mailman
 
+
+RUN ln -s /etc/mailman/apache.conf /etc/apache2/sites-enabled/mailman
+RUN /etc/init.d/apache2 restart
+
+RUN postconf -e 'relay_domains = lists.example.com'
+RUN postconf -e 'transport_maps = hash:/etc/postfix/transport'
+RUN postconf -e 'mailman_destination_recipient_limit = 1'
+RUN postconf -e 'alias_maps = hash:/etc/aliases, hash:/var/lib/mailman/data/aliases'
+
+#In /etc/postfix/master.cf double check that you have the following transport:
+#
+#mailman   unix  -       n       n       -       -       pipe
+#  flags=FR user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
+#  ${nexthop} ${user}
+#
+#It calls the postfix-to-mailman.py script when a mail is delivered to a list.
+#
+#Associate the domain lists.example.com to the mailman transport with the transport map. Edit the file /etc/postfix/transport:
+#
+#lists.example.com      mailman:
+
+ADD ./etc-mailman-mm_cfg.py /eyc/mailman/mm_cfg.py
+
+ADD ./etc-postfix-transport /etc/postfix/transport
+RUN chown root:list /etc/postfix/transport
+
+RUN postmap -v /etc/postfix/transport
+
+#RUN chown root:list /var/lib/mailman/data/aliases
+RUN chown root:list /etc/aliases
+
+RUN newaliases
+
 #run echo "postfix postfix/mailname string mail.example.com" > preseed.txt
 #run debconf-set-selections preseed.txt
-RUN newlist mailman
+#RUN newlist mailman
 
 #RUN groupadd mailman
 #RUN useradd -c "GNU Mailman" -s /no/shell -d /no/home -g mailman mailman
@@ -107,5 +140,5 @@ RUN newlist mailman
 
 #RUN sudo su mailman -c "cd /usr/local/mailman/mailman-3.0.0b3; ./configure; man install"
 
-expose 25
+expose 25 80
 cmd ["sh", "-c", "service syslog-ng start ; service postfix start ; /usr/lib/mailman/bin/mailmanctl start; tail -F /var/log/mailman/*"]

@@ -7,6 +7,7 @@ This image is based on this Postfix image:
 
 Mailman installation procedure:
 
+ * https://help.ubuntu.com/community/Mailman
  * http://list.org/mailman-install/front.html
 
 
