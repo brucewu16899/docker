@@ -23,6 +23,8 @@ RUN apt-get install -y -q mongodb-org
 # Create the MongoDB data directory
 RUN mkdir -p /data/db
 
+ADD ./etc-mongod.cond /etc/mongod.conf
+
 # Expose port 27017 from the container to the host
 EXPOSE 27017
 
