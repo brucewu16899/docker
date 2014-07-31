@@ -1,3 +1,17 @@
+Introduction
+-----------
+
+This containers contains:
+
+ * MySQL server
+ * MongoDB server
+ * NodeJS odata server (on top of MongoDB)
+ * ssh server
+ * tungsten-replicator
+
+The tugsten replication setup is still yet to be configured (the software is installed though).
+
+
 Usage
 -----
 
@@ -36,3 +50,5 @@ Notes
 -----
 
 The `odata-server` `package.json` file is broken. The `connect` module needs to be exactly version `2.0.0`. There is a fix for this in the `Dockerfile`.
+
+
