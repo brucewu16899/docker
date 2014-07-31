@@ -35,7 +35,7 @@ Get users in JSON: `curl --user admin:admin --header "accept: application/json" 
 List all articles: `curl --user admin:admin --header "accept: application/json" http://[IP]:52999/newsreader.svc/Articles`
 
 
-If yo want to make sure that `mongod` is runing:
+If you want to make sure that `mongod` is runing:
 
 ```
 # Install mongo client
