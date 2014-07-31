@@ -45,6 +45,54 @@ sudo apt-get install -y mongodb-clients
 mongo [IP]:27017
 ```
 
+Setup replication
+-----------------
+
+This is work in progress!!
+
+
+Article describing howto setup replication: http://scale-out-blog.blogspot.se/2011/09/quick-installation-of-replication-from.html
+
+Start a container and login (docker run -t -i [IMAGE ID] /bin/bash) then create a MongoDB user using the `mongo` shell:
+
+```
+use admin
+db.createUser({user: "superuser",pwd: "12345678",roles: [ "root" ]})
+```
+
+Fix a link for the MySQL config: `ln -s /etc/mysql/my.cnf /etc/my.cnf`
+
+Setup the MySQL part:
+
+```
+tools/tungsten-installer --master-slave -a \
+  --datasource-type=mysql \
+  --master-host=localhost  \
+  --datasource-user=admin  \
+  --datasource-password=mysql-server  \
+  --service-name=mongodb \
+  --home-directory=/opt/continuent \
+  --cluster-hosts=localhost \
+  --mysql-use-bytes-for-string=false \
+  --svc-extractor-filters=colnames,pkey \
+  --svc-parallelization-type=disk --start-and-report
+```
+
+Setup the MongoDb part:
+
+```
+tools/tungsten-installer --master-slave -a \
+  --datasource-type=mongodb \
+  --master-host=localhost  \
+  --datasource-user=superuser\
+  --datasource-password=12345678 \
+  --service-name=mongodb \
+  --home-directory=/opt/continuent \
+  --cluster-hosts=localhost \
+  --skip-validation-check=InstallerMasterSlaveCheck \
+  --svc-parallelization-type=disk --start-and-report
+```
+
 
 Notes
 -----

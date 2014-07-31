@@ -118,7 +118,10 @@ RUN chmod 700 /root/.ssh; chmod 600 /root/.ssh/**
 # Install tungsten
 RUN  wget https://s3.amazonaws.com/files.continuent.com/builds/nightly/tungsten-2.0-snapshots/tungsten-replicator-2.1.0-346.tar.gz
 RUN tar -xzf tungsten-replicator-2.1.0-346.tar.gz
+RUN mkdir opt/continuent
 
+ADD ./etc-mysql-my.cnf /etc/mysql/my.cnf
+RUN ln -s /etc/mysql/my.cnf /etc/my.cnf
 
 #
 # Start things up
