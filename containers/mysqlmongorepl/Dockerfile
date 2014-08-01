@@ -123,6 +123,10 @@ RUN mkdir opt/continuent
 ADD ./etc-mysql-my.cnf /etc/mysql/my.cnf
 RUN ln -s /etc/mysql/my.cnf /etc/my.cnf
 
+ADD ./init-mongodb.js /src/
+ADD ./init-mongodb.sh /src/
+RUN  /src/nit-mongodb.sh
+
 #
 # Start things up
 # ---------------

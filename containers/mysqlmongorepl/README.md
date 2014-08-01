@@ -55,12 +55,6 @@ Article describing howto setup replication: http://scale-out-blog.blogspot.se/20
 
 Start a container and login (docker run -t -i [IMAGE ID] /bin/bash) then create a MongoDB user using the `mongo` shell:
 
-```
-use admin
-db.createUser({user: "superuser",pwd: "12345678",roles: [ "root" ]})
-```
-
-Fix a link for the MySQL config: `ln -s /etc/mysql/my.cnf /etc/my.cnf`
 
 Setup the MySQL part:
 
