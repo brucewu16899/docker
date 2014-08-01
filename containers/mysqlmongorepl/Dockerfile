@@ -125,7 +125,7 @@ RUN ln -s /etc/mysql/my.cnf /etc/my.cnf
 
 ADD ./init-mongodb.js /src/
 ADD ./init-mongodb.sh /src/
-RUN  /src/nit-mongodb.sh
+RUN  /src/init-mongodb.sh
 
 #
 # Start things up
