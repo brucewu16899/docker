@@ -1,9 +1,7 @@
 MySQL, apache and phpMyAdmin container
 ====================================
 
-MySQL, PHP on apache where PHP versions are managed using phpfarm.
-FastCGI is used in apache instead of mod_php. The PHP version is
-easily changed in the Dockerfile.
+Manage PHP versions with phpfarm. Update the `Dockerfile` with the desired version.
 
 
 Build the container: `docker build --rm .`

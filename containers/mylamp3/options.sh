@@ -34,7 +34,7 @@ configoptions="\
 --with-openssl \
 --with-zlib \
 --with-gettext \
---with-libdir=lib64 \
+--with-libdir=lib \
 --enable-memory-limit \
 --with-regex=php \
 --enable-sysvsem \
@@ -78,14 +78,16 @@ configoptions="\
 --with-xsl=/usr \
 --with-zip \
 --enable-zip \
+--with-imap=/usr \
+--with-imap-ssl=/usr \
+--with-xpm-dir=/usr \
+--with-jpeg-dir=/usr \
+--with-png-dir=/usr \
 $gcov"
 
 #
-# --with-xpm-dir=/usr \
-# --with-jpeg-dir=/usr \
-# --with-png-dir \
+# --with-t1lib=/usr \
 # --with-freetype-dir=/usr \
-# --with-t1lib \
 #
 
 echo $version $vmajor $vminor $vpatch
