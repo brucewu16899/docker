@@ -33,7 +33,7 @@ echo "CREATE DATABASE $DBNAME DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_ge
 echo "grant usage on *.* to '$DBUSER'@'%' identified by '$DBPASSWORD'; FLUSH PRIVILEGES" | mysql
 echo "grant usage on *.* to '$DBUSER'@'localhost' identified by '$DBPASSWORD'; FLUSH PRIVILEGES" | mysql
 echo "grant all privileges on $DBNAME.* to '$DBUSER'@'%'; FLUSH PRIVILEGES" | mysql
-mysql -u$DBUSER -p$DBPASSWORD $DBNAME < /sql-script/$SQLFILE
+mysql -u$DBUSER -p$DBPASSWORD $DBNAME < /src-mysql/$SQLFILE
 
 
 #

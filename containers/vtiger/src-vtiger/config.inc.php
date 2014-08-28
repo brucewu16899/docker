@@ -46,9 +46,9 @@ $HELPDESK_SUPPORT_EMAIL_REPLY_ID = $HELPDESK_SUPPORT_EMAIL_ID;
 
 $dbconfig['db_server'] = 'localhost';
 $dbconfig['db_port'] = ':3306';
-$dbconfig['db_username'] = 'vtiger';
-$dbconfig['db_password'] = 'vtiger';
-$dbconfig['db_name'] = 'vtiger';
+$dbconfig['db_username'] = 'vtigerdemo';
+$dbconfig['db_password'] = 'vtigerdemo';
+$dbconfig['db_name'] = 'vtigerdemo';
 $dbconfig['db_type'] = 'mysql';
 $dbconfig['db_status'] = 'true';
 
