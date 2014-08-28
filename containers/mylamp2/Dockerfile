@@ -18,6 +18,7 @@ RUN apt-get install -y wget nano curl git
 RUN apt-get install -y supervisor
 ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+
 #
 # Change PHP version
 #

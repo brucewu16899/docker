@@ -1,6 +1,11 @@
 MySQL, apache and phpMyAdmin container
 ====================================
 
+PHP versions are managed with phpbrew.  I have not been able to get apache
+to use the phpbrew PHP versions though. See mylamp3 for a setup where this 
+works.
+
+
 Build the container: `docker build --rm .`
 
 Start a container: `docker run -d -p 80:80 [IMAGE ID]`
