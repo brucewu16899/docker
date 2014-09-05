@@ -48,7 +48,7 @@ RUN cd /src/fcron-3.2.0; make install
 # Set fcrontab entry 
 RUN fcrontab -l > mycron
 # Run jon every minute
-RUN echo "*/1 * * * *  sh echo "date: `date`\n" >> /var/log/cronjob" >> mycron
+RUN echo "*/1 * * * *  sh -c date >> /var/log/cronjob" >> mycron
 RUN fcrontab mycron
 RUN rm mycron
 
