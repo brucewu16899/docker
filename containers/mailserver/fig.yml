@@ -1,0 +1,4 @@
+postfix:
+  image: postfix
+  ports:
+  - "25:25"

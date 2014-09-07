@@ -31,7 +31,6 @@ ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Install sendmail and build-essential
 #
 
-#RUN apt-get install -y apache2 build-essential php5 php5-curl php5-mcrypt php5-mysql sendmail
 RUN apt-get install -y build-essential sendmail
 
 
