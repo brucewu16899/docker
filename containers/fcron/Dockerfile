@@ -11,7 +11,7 @@
 #
 # * Daemons are managed with supervisord.
 #
-# * Logging from all daemons should be performed to `/var/log/supervisor/supervisord.log`.
+# * Logging from all processes should be performed to `/var/log/supervisor/supervisord.log`.
 #   The start script will `tail -f` this log so it shows up in `docker logs`. The log file of 
 #   daemons that can't log to `/var/log/supervisor/supervisord.log` should also be tailed
 #   in `start.sh`
@@ -27,23 +27,32 @@ RUN apt-get install -y curl wget nano unzip
 
 RUN echo "export HOME=/root" > /.profile
 
+
 #
 # Install supervisord (used to handle processes)
+# ----------------------------------------------
 #
+# Installation with easy_install is more reliable. apt-get don't always work.
 
-RUN apt-get install -y supervisor
+RUN apt-get install -y python python-setuptools
+RUN easy_install supervisor
+#RUN apt-get install -y supervisor
+
+ADD ./etc-supervisord.conf /etc/supervisord.conf
 ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN mkdir -p /var/log/supervisor/
+
 
 #
 # Install sendmail and build-essential
-#
+# ------------------------------------
 
 RUN apt-get install -y build-essential sendmail
 
 
 #
 # Install fcron and batches
-#
+# -------------------------
 
 ADD ./src-fcron /src
 RUN cd /src/fcron-3.2.0; ./configure 
@@ -61,7 +70,7 @@ RUN rm mycron
 
 #
 # Start things
-#
+# -------------
 
 ADD ./start.sh /
 CMD ["/start.sh"]
