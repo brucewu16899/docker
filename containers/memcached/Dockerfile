@@ -31,10 +31,17 @@ RUN echo "export HOME=/root" > /.profile
 
 #
 # Install supervisord (used to handle processes)
+# ----------------------------------------------
 #
+# Installation with easy_install is more reliable. apt-get don't always work.
 
-RUN apt-get install -y supervisor
+RUN apt-get install -y python python-setuptools
+RUN easy_install supervisor
+#RUN apt-get install -y supervisor
+
+ADD ./etc-supervisord.conf /etc/supervisord.conf
 ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN mkdir -p /var/log/supervisor/
 
 #
 # Install sendmail and build-essential
