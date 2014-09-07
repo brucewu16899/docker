@@ -43,8 +43,6 @@ ADD ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN apt-get install -y memcached
 
 
-ADD ./etc-memcached.conf /etc/memcached.conf
-
 #
 # Start things
 #

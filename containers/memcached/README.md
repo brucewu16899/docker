@@ -1,7 +1,7 @@
 memcached docker image
 ======================
 
-Build with: `docker build --rm -t memchanced .`
+Build with: `docker build --rm -t memcached .`
 
 Run the container interactive mode for testing purposes : 
 `docker run -d -p 11211:11211 --name memcached memcached`.
