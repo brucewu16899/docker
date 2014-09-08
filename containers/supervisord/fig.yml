@@ -1,0 +1,4 @@
+supervisord:
+  image: supervisord
+  ports:
+  - "9001:9001"
