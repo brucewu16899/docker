@@ -1,19 +1,17 @@
-le-docker
-=========
+rsyslog server
+==============
 
-Logentries/Docker integration examples
+This container has a rsyslog server running and listening on UDP port 514.
+Any client (container in the network) can log to this rsyslog server.
 
-rsyslog
-===
+Build the image: `docker build -t rsyslog .`
 
-Usage:
 
-From the root of the repository:
+Starting the server this way makes it possible to connect and reconnect to the
+server:
+`docker run -t -i --restart="on-failure:10" --name rsyslog rsyslog /bin/bash -c "supervisord; bash"`
 
-    $ docker build -i -t le/example .
-    $ docker run -i -t le/example /bin/bash
+Exit the server with `ctrl-p` `ctrl-q`. Reconnect with `docker attach rsyslog`
 
-And to log some data:
-
-    $ rsyslog
-    $ logger 'hello, world!'
+There is a example of a client configuration in `rsyslog.conf.client`.
+Test to print to syslog with `logger` from a client to make sure things are ok.
