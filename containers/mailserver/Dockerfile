@@ -76,4 +76,3 @@ ADD ./start.sh /
 
 expose 25
 cmd ["/start.sh"]
-

@@ -62,8 +62,8 @@ $IncludeConfig /etc/rsyslog.d/*.conf
 
 #
 # NOTE: The IP address below needs to be updated to the address of the syslog
-#       server
+#       server unless `--link rsyslogserver` is used when starting the container
 #
 # @ means logging using UDP, @@ means loging using TCP
 #
-*.*   @172.17.0.12:514
+*.*   @rsyslog:514
