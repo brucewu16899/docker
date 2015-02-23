@@ -60,8 +60,8 @@ RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.
 RUN tar zxvf logstash-1.4.2.tar.gz
 ADD ./logstash.conf /
 
-RUN curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.tar.gz
-RUN tar -zxvf elasticsearch-1.4.1.tar.gz
+RUN curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.tar.gz
+RUN tar -zxvf elasticsearch-1.4.4.tar.gz
 
 #
 # Start things up
