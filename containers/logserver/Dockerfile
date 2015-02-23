@@ -44,8 +44,8 @@ ADD ./rsyslog.conf.server /etc/rsyslog.conf
 # ------------
 
 # Run jon every minute
-RUN echo '*/1 * * * *  /bin/bash -c "echo `date` testjob, just testing to print to stdout"' > /mycron
-RUN crontab /mycron
+#RUN echo '*/1 * * * *  /bin/bash -c "echo `date` testjob, just testing to print to stdout"' > /mycron
+#RUN crontab /mycron
 
 ADD ./etc-pam.d-cron /etc/pam.d/cron
 
@@ -63,11 +63,15 @@ ADD ./logstash.conf /
 RUN curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.tar.gz
 RUN tar -zxvf elasticsearch-1.4.4.tar.gz
 
+RUN mv /elasticsearch-1.4.4/config/elasticsearch.yml /elasticsearch-1.4.4/config/elasticsearch.yml.org
+ADD ./elasticsearch-config-elasticsearch.yml /elasticsearch-1.4.4/config/elasticsearch.yml
+
+
 #
 # Start things up
 # ----------------
 #
 
-EXPOSE 514 9200 9292
+EXPOSE 514 5514 9200 9292
 
 CMD ["supervisord"]
