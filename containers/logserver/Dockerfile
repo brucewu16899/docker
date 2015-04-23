@@ -1,4 +1,4 @@
-# Rsyslog server (end example of client configuration)
+# Logstash and Elasticsearch server (end example of client configuration)
 #
 # VERSION               0.0.1
 
@@ -10,7 +10,8 @@ MAINTAINER Jonas Colmsjö <jonas@gizur.com>
 RUN echo "export HOME=/root" >> /root/.profile
 
 # Mirros: http://ftp.acc.umu.se/ubuntu/ http://us.archive.ubuntu.com/ubuntu/
-RUN echo "deb http://ftp.acc.umu.se/ubuntu/ trusty-updates main restricted" >> /etc/apt/source.list
+#RUN echo "deb http://ftp.acc.umu.se/ubuntu/ trusty-updates main restricted" >> /etc/apt/source.list
+RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates main restricted" >> /etc/apt/source.list
 RUN apt-get update
 RUN apt-get install -y wget nano curl git
 

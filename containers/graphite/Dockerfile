@@ -59,5 +59,42 @@ RUN echo '*/1 * * * *  /bin/bash -c "/batches.sh"' >> /mycron
 ADD ./etc-pam.d-cron /etc/pam.d/cron
 
 
+#
+# Install Apache
+# ---------------
+
+RUN apt-get install -y apache2 apache2-dev
+RUN a2enmod rewrite status
+ADD ./etc-apache2-apache2.conf /etc/apache2/apache2.conf
+ADD ./etc-apache2-mods-available-status.conf /etc/apache2/mods-available/status.conf
+
+RUN rm /var/www/html/index.html
+RUN echo "<?php\nphpinfo();\n " > /var/www/html/info.php
+
+
+#
+# Some pre-requisites
+# ------------------
+
+RUN apt-get install -y build-essential python-dev
+RUN apt-get install -y python-cairo python-django python-twisted
+
+RUN pip install django-tagging
+RUN easy_install --upgrade pytz
+
+RUN apt-get install -y fontconfig python-fontconfig
+
+
+#
+# Install graphite
+# ----------------
+
+RUN pip install https://github.com/graphite-project/ceres/tarball/master
+RUN pip install whisper
+RUN pip install carbon
+RUN pip install graphite-web
+
+
+
 EXPOSE 80 443
 CMD ["supervisord"]
