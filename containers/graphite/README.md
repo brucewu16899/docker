@@ -1,7 +1,7 @@
 batches in supervisord
 ======================
 
-Build with: `docker build --rm -t supervisord .`
+Build with: `docker build --rm -t graphite .`
 
 Run the container interactive mode for testing purposes :
 `docker run -t -i --rm graphite /bin/bash`.
