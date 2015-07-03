@@ -2,13 +2,13 @@
 #
 # VERSION               0.0.1
 
-FROM     base
+FROM     ubuntu:latest
 MAINTAINER Jonas Colmsjö "jonas@gizur.com"
 
 
 # Keep upstart from complaining
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -s /bin/true /sbin/initctl
+#RUN dpkg-divert --local --rename --add /sbin/initctl
+#RUN ln -s /bin/true /sbin/initctl
 
 RUN apt-get update
 
@@ -29,13 +29,13 @@ RUN apt-get install -y apache2 php5 php5-curl php5-mysql php5-mcrypt
 RUN a2enmod rewrite
 
 # Bundle everything and install
-ADD ./src-phpmyadmin /var/www
+ADD ./src-phpmyadmin /var/www/html
 ADD ./conf/etc /etc
 
-RUN cd /var/www; tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
-RUN rm /var/www/index.html
+RUN cd /var/www/html; tar -xzf phpMyAdmin-4.0.8-all-languages.tar.gz
+#RUN rm /var/www/index.html
 
-ADD ./src-phpmyadmin/config.inc.php /var/www/phpMyAdmin-4.0.8-all-languages/config.inc.php
+ADD ./src-phpmyadmin/config.inc.php /var/www/html/phpMyAdmin-4.0.8-all-languages/config.inc.php
 
 
 #
